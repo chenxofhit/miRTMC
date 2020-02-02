@@ -1,0 +1,410 @@
+<div class="row-fluid tabtable">
+	<div class="span2"></div>
+	<div class="span8">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#workflow" data-toggle="tab">WorkFlow</a></li>
+			<li><a href="#userguide" data-toggle="tab">User's Guide</a></li>
+			<li><a href="#supplementary" data-toggle="tab">Predicted result</a></li>
+		</ul>
+	</div>
+	<div class="span2"></div>
+</div>
+<div class="tab-content">
+	<div class="tab-pane active fade in" id="workflow">
+		<div class="G-MarginTop20 alert alert-warning">
+			<ul class="nav nav-list text-default">
+				<li class="nav-header">Introduction</li>
+				<li><a href="index#Introduction"> Introduction </a></li>
+				<li class="nav-header">Method Details of LDAP</li>
+				<li><a href="index#Method">Method</a></li>
+				<li><a href="index#Method_Step1">1. computing similarity of
+						lncRNA</a></li>
+				<li><a href="index#Method_Step2">2. computing similarity of
+						disease</a></li>
+				<li><a href="index#Method_Step3">3. fusing similarity
+						(kernel) matrix based on Karcher mean</a></li>
+				<li><a href="index#Method_Step4">4. bagging SVM for
+						lncRNA-disease association prediction </a></li>
+				<li class="nav-header">Workflow</li>
+				<li><a href="index#Workflow">Workflow</a></li>
+			</ul>
+		</div>
+		<div class="G-MarginTop20 ">
+			<!-- <h2><strong class="text-uppercase"><span class="glyphicon glyphicon-info-sign"> </span>User's Guide</strong></h2> -->
+		</div>
+
+		<!-- Introduction -->
+		<h3 id="Introduction">
+			<strong class="text-danger text-uppercase"> Introduction</strong>
+		</h3>
+		<p class="text-default alert alert-info G-MarginTop20">Long
+			non-coding RNAs (long ncRNAs, lncRNA) are non-protein coding
+			transcripts longer than 200 nucleotides. Recent recognition that long
+			ncRNAs function in various aspects of cell biology has focused
+			increasing attention on their potential to contribute towards disease
+			etiology. The LDAP is a free web server for lncRNA-disease
+			association prediction</p>
+
+		<!-- Method -->
+		<h3 id="Method">
+			<strong class="text-danger text-uppercase"> Method</strong>
+		</h3>
+		<p class="text-default alert alert-info G-MarginTop20">LDAP took
+			the input lncRNA sequence in fasta format, either a pasted sequence
+			(length > 200bp) or a file. Then the sequence similarity between
+			input lncRNA and database is calculated by using Smith-Waterman
+			algorithm. In addition, LDAP uses LncR_Gip for lncRNA similarity and
+			five methods (Dis_Icod, Dis_Top, Dis_Gf, Dis_GO and Dis_Gip) for
+			disease similarity measurement. Then, the karcher mean of matrixes is
+			employed to fuse similarity matrixes of lncRNA and disease and the
+			bagging SVM is used to identify potential lncRNA-disease
+			interactions.</p>
+
+		<h4 id="Method_Step1">
+			<strong class="text-danger">1 computing similarity of lncRNA</strong>
+		</h4>
+		<div class="text-default G-MarginTop10">
+			<p>We use two methods to measure similarity between lncRNAs:
+				lncRNA sequence similarity and lncRNA interaction profile
+				similarity. The Smith-Waterman alignment algorithm (Emboss-Needle
+				tool) is used to calculate sequence similarity between two lncRNAs.
+				The parameters of Emboss-Needle are specified as default value
+				(Matrix = EDNAfull, Gap open = 10, Gap extend = 0.5). The pairwise
+				similarity between lncRNAs can be defined as:</p>
+			<img class="G-MarginTop10" alt="mutiple-sequences.jpg"
+				src="images/method_step1_1.png">
+			<p>Based on assumption that similar diseases exhibit a similar
+				interaction profile with lncRNAs (Van Laarhoven et al., 2013), the
+				lncRNA interaction profile similarity can be calculated from known
+				lncRNA-disease interactions. It is defined as:</p>
+			<img class="G-MarginTop10" alt="mutiple-sequences.jpg"
+				src="images/method_step1_2.png">
+		</div>
+
+		<h4 id="Method_Step2">
+			<strong class="text-danger">2. computing similarity of
+				disease</strong>
+		</h4>
+		<div class="text-default G-MarginTop10">
+			<p>We employ five methods (Dis_Gf, Dis_Gip, Dis_GO, Dis_Top and
+				Dis_Icod) for measuring disease similarity.</p>
+			<p>It is well known that the phenotypes of a disease have close
+				association with genes (Cheng et al., 2014). Therefore, gene
+				function similarity can be used to measure disease similarity. Given
+				two diseases Da and Db, Dis_Gf(Da,, Db) is defined as:</p>
+			<img class="G-MarginTop10" alt="mutiple-sequences.jpg"
+				src="images/method_step2_1.png">
+			<p>The disease interaction profile similarity can be calculated
+				from known lncRNA-disease interactions (Van Laarhoven et al., 2013)
+				and is defined as:</p>
+			<img class="G-MarginTop10" alt="mutiple-sequences.jpg"
+				src="images/method_step2_2.png">
+			<p>where denotes the binary vector encoding the presence or
+				absence of interaction between disease and all lncRNAs, i.e., the
+				a-th column of lncRNA-disease association adjacency matrix. denotes
+				the number of diseases.</p>
+			<p>It is well known that gene ontology is a kind of useful
+				annotation information for disease genes. Therefore, the gene
+				ontology and disease-gene association can be used to measure disease
+				similarity. We obtain the disease gene related GO terms by
+				propagating the GO annotations upwards through the GO hierarchy,
+				i.e., when a gene was annotated with a GO term (Sun et al., 2014).
+				The similarity for pairwise diseases Da and Db is defined as, by
+				using the Jaccard index as:</p>
+			<img class="G-MarginTop10" alt="mutiple-sequences.jpg"
+				src="images/method_step2_3.png">
+			<p>Several researches have shown that diseases have close
+				relationship with protein-protein interaction networks. Thus, we use
+				the topology information of the human PPI network and disease-gene
+				association data to measure disease similarity. The graphlet-based
+				method is used to evaluate the topological similarity of genes in
+				the human PPI network (Sun et al., 2014). The topology similarity
+				between Da and Db, Dis_top(Da, Db), is defined as:</p>
+			<img class="G-MarginTop10" alt="mutiple-sequences.jpg"
+				src="images/method_step2_4.png">
+			<p>The disease–disease similarity is measured by calculating the
+				distance between each pair of disease-related genes based on the
+				shortest path in the human PPI network (Paik et al., 2014). The
+				disease similarity between Da and Db, Dis_Icod(Da, Db), is defined
+				as:</p>
+			<img class="G-MarginTop10" alt="mutiple-sequences.jpg"
+				src="images/method_step2_5.png">
+		</div>
+		<h4 id="Method_Step3">
+			<strong class="text-danger">3. fusing similarity (kernel)
+				matrix based on Karcher mean</strong>
+		</h4>
+		<div class="text-default G-MarginTop10">
+			<p>The weighted arithmetic average method is a traditional
+				approach for multiple kernel matrixes fusion (Jeuris et al., 2012).
+				It often reduces to a convex optimization problem. However, there
+				are some limitations: 1) it is suitable for few kernels and small
+				number of data; 2) it is sensitive for noisy data; and 3) it could
+				easily cause useful information loss. In this study, Karcher mean of
+				matrices is employed to fuse similarity matrices of lncRNA and
+				disease, respectively (Zakeri et al., 2014). For a set of similarity
+				matrices: , their Karcher mean (K) is defined as:</p>
+			<img class="G-MarginTop10" alt="mutiple-sequences.jpg"
+				src="images/method_step3_1.png">
+			<p>where S denotes the set of all semi-positive matrices, F
+				denotes the Frobenius norm. The manifold optimization is used to
+				solve the optimization problem. The steepest descent algorithm is
+				used to determine the search direction.</p>
+		</div>
+
+		<h4 id="Method_Step4">
+			<strong class="text-danger">4. bagging SVM for
+				lncRNA-disease association prediction</strong>
+		</h4>
+		<div class="text-default G-MarginTop10">
+			<p>Several methods have been proposed for positive-unlabled (PU)
+				learning. The goal of these methods is to discriminate positive
+				sample (P) from unlabled sample (U). Bootstrap aggregating or
+				“bagging” is an interesting candidate. The idea of bagging is to
+				estimate a series of classifiers on datasets obtained by perturbing
+				the original training set through bootstrap resampling, and to
+				combine these classifiers by some aggregation technique. The method
+				is conceptually simple, can be applied in many settings and works
+				very well in practice (Mordelet et al., 2014). Bagging generally
+				improves the performance of individual classifiers when they are not
+				too correlated to each other, which happens in particular when the
+				classifier is highly sensitive to small perturbations of the
+				training set.</p>
+			<img class="G-MarginTop10" alt="mutiple-sequences.jpg"
+				src="images/method_step4_1.png">
+			<p>The bagging PU learning is described in Algorithm 1. P and U
+				denote positive sample and unlabeled sample, respectively. N denotes
+				the size of subsample. M denotes times of sampling. t(x) is the
+				number of times of unlabeled sample x predicted by classifier. The
+				random unlabeled subsample Ui is obtained by resampling method in
+				each time. The weighted SVM is trained to discriminate positive
+				sample P from unlabeled random subsample Ui. The aim of resampling
+				method is to induce the variability in the classifiers. In the last,
+				the score of unlabeled example x, s(x), is obtained by aggregating
+				the predictions of the classifiers trained on subsamples without x.
+			</p>
+		</div>
+
+
+		<!-- Workflow -->
+		<h3 id="Workflow">
+			<strong class="text-danger text-uppercase">Workflow</strong>
+		</h3>
+		<div class="text-default alert alert-info G-MarginTop10">
+			The flowchat of LDAP is illustrated below: <img class="G-MarginTop10"
+				alt="lncRNA-disease.jpg" src="images/lncRNA-disease.jpg">
+		</div>
+	</div>
+	<div class="tab-pane" id="userguide">
+		<div class="G-MarginTop20 ">
+			<!-- <h2><strong class="text-uppercase"><span class="glyphicon glyphicon-info-sign"> </span>User's Guide</strong></h2> -->
+			<p class="text-default alert alert-info G-MarginTop20">The LDAP
+				took the input lncRNA sequence in fasta format, either a pasted
+				sequence or a file with multiple sequences (size limit < 50kb). When
+				the user want to submit single sequence, the user can paste the
+				sequence with FASTA format into textbox (1) and click the “submit”
+				button (2). The user could not close the page and waits for the
+				result. The predicted result will be showed within several minutes.
+				The user can download the results (3). If the user want to check the
+				result in future, it can be regained by email (4). In addition, the
+				user can search the result with disease name (5).</p>
+			<div class="text-default G-MarginTop10">
+				The flowchat is illustrated below: <img class="G-MarginTop10"
+					alt="one-sequence.jpg" src="images/one-sequence.jpg">
+				<p class="text-default alert alert-info G-MarginTop20">When the
+					user submits text file with multiple sequences, the user uploads
+					the text with multiple sequences (1) and provides email address
+					(2). And then clicks the “submit” button (3), the user can close
+					the page when submitting successfully. The notification will be
+					sent to the user in term of email when task is completed. The user
+					can check their result in result page by jobid and email (4). In
+					addition, the user can download the results (5) and search the
+					result with disease name (6).</p>
+				<div class="text-default G-MarginTop10">
+					The flowchat is illustrated below: <img class="G-MarginTop10"
+						alt="mutiple-sequences.jpg" src="images/mutiple-sequences.jpg">
+				</div>
+				<hr>
+				<h3>
+					<strong class="text-danger text-uppercase">Input Examples</strong>
+				</h3>
+				<p class="text-default alert alert-info G-MarginTop20">The LDAP
+					provides two ways to upload data:</p>
+				<h4>
+					<strong class="text-danger text-uppercase">1): single
+						sequence</strong>
+				</h4>
+			</div>
+			<p class="text-default alert alert-info  G-MarginTop20"
+				style="word-wrap: break-word; word-break: normal;">single
+				sequence: the user can paste their sequence with FASTA format (A
+				sequence in FASTA format begins with a single-line description,
+				followed by lines of sequence data. The description line is
+				distinguished from the sequence data by a greater-than (">") symbol
+				in the first column.). Three input examples of single sequence are
+				listed below:</p>
+			<hr>
+			<p class="text-muted G-MarginTop20"
+				style="word-wrap: break-word; word-break: normal;">
+				>7SK <br>GGATGTGAGGGCGATCTGGCTGCGACATCTGTCACCCCATTGATCGCCAGGGTTGATTCGGCTGATCTGGCTGGCTAGGCGGGTGTCCCCTTCCTCCCTCACCGCTCCATGTGCGTCCCTCCCGAAGCTGCGCGCTCGGTCGAAGAGGACGACCATCCCCGATAGAGGAGGACCGGTCTTCGGTCAAGGGTATACGAGTAGCTGCGCTCCCCTGCTAGAACCTCCAAACAAGCTCTCAAGGTCCATTTGTAGGAGAACGTAGGGTAGTCAAGCTTCCAAGACTCCAGACACATCCAAATGAGGCGCTGCATGTGGCAGTCTGCCTTTCTTTT
+				<br>
+			</p>
+			<hr>
+			<p class="text-muted G-MarginTop20"
+				style="word-wrap: break-word; word-break: normal;">
+				>BCYRN1P2 <br>
+				CTACAAAGGACATGAACTCATCATTTTTTATGGCTGCATAGTATTCCATGGTGTATATGTGCCACATTTTCTTAATCCAGTCTATCATTGTTGGACATTTGCAGTGGCTCACGCCTGTAATCCCAGCTCTCAGGGAGGCTAAGAGGCGGGAGGATAGCTTGAGCCCAGGAGTTCGAGACCTGCCTGGGCAATATAGCGAGACCCCGTTCTCCAGAAAAAGGAAAAAAAAAACAAAACAAAAGACAAAAAAAAAAAAATAAGCGTAACTTCCCTCAAGGCAAACCAATCCAATCTTTTTAACACATTTTTATGTATGTATGTATGTATGTATTTATTTTTAGACATAGGTGGGCCACCGAAGTTCTTTGACTTGCTATTTATTTCTTTCC
+				<br>
+			</p>
+			<hr>
+			<p class="text-muted G-MarginTop20"
+				style="word-wrap: break-word; word-break: normal;">
+				>GAPDH <br>
+				GTGCGCAGCGGGTGCATCCCTGTCCGGATGCTGCGCCTGCGGTAGAGCGGCCGCCATGTTGCAACCGGGAAGGAAATGAATGGGCAGCCGTTAGGAAAGCCTGCCGGTGACTAACCCTGCGCTCCTGCCTCGATGGGTGGAGTCGCGTGTGGCGGGGAAGTCAGGTGGAGCGAGGCTAGCTGGCCCGATTTCTCCTCCGGGTGATGCTTTTCCTAGATTATTCTCTGATTTGGTCGTATTGGGCGCCTGGTCACCAGGGCTGCTTTTAACTCTGGTAAAGTGGATATTGTTGCCATCAATGACCCCTTCATTGACCTCAACTACATGGTTTACATGTTCCAATATGATTCCACCCATGGCAAATTCCATGGCACCGTCAAGGCTGAGAACGGGAAGCTTGTCATCAATGGAAATCCCATCACCATCTTCCAGGAGCGAGATCCCTCCAAAATCAAGTGGGGCGATGCTGGCGCTGAGTACGTCGTGGAGTCCACTGGCGTCTTCACCACCATGGAGAAGGCTGGGGCTCATTTGCAGGGGGGAGCCAAAAGGGTCATCATCTCTGCCCCCTCTGCTGATGCCCCCATGTTCGTCATGGGTGTGAACCATGAGAAGTATGACAACAGCCTCAAGATCATCAGCAATGCCTCCTGCACCACCAACTGCTTAGCACCCCTGGCCAAGGTCATCCATGACAACTTTGGTATCGTGGAAGGACTCATGACCACAGTCCATGCCATCACTGCCACCCAGAAGACTGTGGATGGCCCCTCCGGGAAACTGTGGCGTGATGGCCGCGGGGCTCTCCAGAACATCATCCCTGCCTCTACTGGCGCTGCCAAGGCTGTGGGCAAGGTCATCCCTGAGCTGAACGGGAAGCTCACTGGCATGGCCTTCCGTGTCCCCACTGCCAACGTGTCAGTGGTGGACCTGACCTGCCGTCTAGAAAAACCTGCCAAATATGATGACATCAAGAAGGTGGTGAAGCAGGCGTCGGAGGGCCCCCTCAAGGGCATCCTGGGCTACACTGAGCACCAGGTGGTCTCCTCTGACTTCAACAGCGACACCCACTCCTCCACCTTTGACGCTGGGGCTGGCATTGCCCTCAACGACCACTTTGTCAAGCTCATTTCCTGGTATGACAACGAATTTGGCTACAGCAACAGGGTGGTGGACCTCATGGCCCACATGGCCTCCAAGGAGTAAGACCCCTGGACCACCAGCCCCAGCAAGAGCACAAGAGGAAGAGAGAGACCCTCACTGCTGGGGAGTCCCTGCCACACTCAGTCCCCCACCACACTGAATCTCCCCTCCTCACAGTTGCCATGTAGACCCCTTGAAGAGGGGAGGGGCCTAGGGAGCCGCACCTTGTCATGTACCATCAATAAAGTACCCTGTGCTCAACCAAAAAAAAAAAAAAAAAAA
+				<br>
+			</p>
+			<hr>
+			<h4>
+				<strong class="text-danger text-uppercase">2): Text file
+					with multiple sequences</strong>
+			</h4>
+			<p class="text-default alert alert-info G-MarginTop20"
+				style="word-wrap: break-word; word-break: normal;">
+				Text file with multiple sequences: if the user want to upload
+				multiple sequences, we recommend the user upload their data with
+				text file. In text file, each sequence should be the FASTA format.
+				The size of text file should be 50KB. The input example of text is
+				listed below (In package, it can four text files: example1.txt,
+				example2.txt, example3.txt and example4.txt contains two, four, six
+				and ten lncRNA sequences, respectively.): <br>
+			</p>
+			<a href="download/examples" class="btn btn-primary" role="button">Download</a>
+			<hr>
+			<h3>
+				<strong class="text-danger text-uppercase">Output
+					Description</strong>
+			</h3>
+			<p class="text-default alert alert-info G-MarginTop20"
+				style="word-wrap: break-word; word-break: normal;">The final
+				results will be given in a table format. Each sequence id follows
+				the result of predicted disease with scores ranging from 0 to 1.
+				Higher scores represent higher confidence of the disease.
+				Downloadable results are provided in txt format. If email address is
+				left previously, an alert mail will be sent as soon as the results
+				are ready.</p>
+		</div>
+	</div>
+	<div class="tab-pane" id="supplementary">
+		<div class="G-MarginTop20">
+			<!-- <h2><strong class="text-uppercase"><span class="glyphicon glyphicon-info-sign"> </span>User's Guide</strong></h2> -->
+			<p class="text-default alert alert-info G-MarginTop20">According
+				to the statistical data of American cancer society, over 200,000
+				women and 2,000 men are diagnosed with invasive breast cancer each
+				year in the United States. The pathogenic mechanism of breast cancer
+				is viewed as the result of interaction between the environmental
+				factor and the genetically susceptible host. Many lncRNAs have
+				association with breast cancer via up-regulating or down-regulating
+				of breast cancer genes. For example, long non-coding RNA UCA1
+				promotes breast tumor growth through interaction with the
+				5′-untranslated region (5′-UTR) of p27 mRNAs to suppress of p27
+				(Kip1) gene expression. Table 1 shows the top 20 potential breast
+				cancer related lncRNAs which are predicted by LDAP</p>
+			<div class="text-default G-MarginTop10">
+				<div class="col-md-3"></div>
+				<table class="col-md-6 table table-striped" style="margin: 0 auto;">
+					<caption>Table 1: The top 20 predicted lncRNA of Breast
+						Cancer</caption>
+					<thead>
+						<tr>
+							<th>Rank</th>
+							<th>Predicted LncRNA</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>PDZRN3-AS1</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>WRAP53</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Ube3a-as</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>DAPK1</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>RRP1B</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>DLX6-AS1</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>SCAANT1</td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>HAR1A</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>PCGEM1</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>DAOA-AS1</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>UCA1</td>
+						</tr>
+						<tr>
+							<td>12</td>
+							<td>DLG2AS</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>SNHG5</td>
+						</tr>
+						<tr>
+							<td>14</td>
+							<td>NAMA</td>
+						</tr>
+						<tr>
+							<td>15</td>
+							<td>DLEU2</td>
+						</tr>
+						<tr>
+							<td>16</td>
+							<td>ZFAT-AS1</td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td>ESRG</td>
+						</tr>
+						<tr>
+							<td>18</td>
+							<td>WT1-AS</td>
+						</tr>
+						<tr>
+							<td>19</td>
+							<td>SNHG4</td>
+						</tr>
+						<tr>
+							<td>20</td>
+							<td>AK023948</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+	</div>
+</div>

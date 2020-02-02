@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>miRTMC</title>
+    <base href="$request.getAttribute('BAST_PATH')/" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="icon" type="image/x-icon" href="$request.getAttribute('BAST_PATH')/favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- bootstrap相关组件 -->
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="js/bootstrapTable//bootstrap-table.min.js"></script>
+    <script src="js/bootstrapTable/bootstrap-table-export.js"></script>
+    <script src="js/bootstrapTable/tableExport.js"></script>
+    <!-- 自定义基本CSS -->
+    <link rel="stylesheet" href="css/basepage.css">
+    <!-- font-awesome字体库 -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrapValidator.min.css" rel="stylesheet">
+    <!--bootstrap-select start-->
+    <link rel="stylesheet" href="css/bootstrap-select.min.css">
+    <script src="js/bootstrapTable/bootstrap-select.min.js"></script>
+    <!--bootstrap-select end-->
+    <style type="text/css">
+    * {
+        font-weight: bold;
+    }
+    
+    body {
+        min-width: 800px;
+    }
+    
+    #brief {
+        height: 100px;
+    }
+    
+    .ldap-brief {
+        Word-spacing: 0.2em;
+    }
+    
+    p {
+        margin: 10px 0px;
+        text-indent: 14px;
+    }
+    
+    .tab-pane,
+    .message {
+        min-height: 500px;
+    }
+    
+    .email-error,
+    .sequence-error,
+    #email_div {
+        display: none;
+    }
+    
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    /*loading page*/
+    
+    .loadEffect {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+    
+    .loadEffect span {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #4D8BCA;
+        position: absolute;
+        -webkit-animation: load 1.04s ease infinite;
+    }
+    
+    @-webkit-keyframes load {
+        0% {
+            -webkit-transform: scale(1.2);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(0.3);
+            opacity: 0.5;
+        }
+    }
+    
+    .loadEffect span:nth-child(1) {
+        left: 0;
+        top: 50%;
+        margin-top: -10px;
+        -webkit-animation-delay: 0.13s;
+    }
+    
+    .loadEffect span:nth-child(2) {
+        left: 14px;
+        top: 14px;
+        -webkit-animation-delay: 0.26s;
+    }
+    
+    .loadEffect span:nth-child(3) {
+        left: 50%;
+        top: 0;
+        margin-left: -10px;
+        -webkit-animation-delay: 0.39s;
+    }
+    
+    .loadEffect span:nth-child(4) {
+        top: 14px;
+        right: 14px;
+        -webkit-animation-delay: 0.52s;
+    }
+    
+    .loadEffect span:nth-child(5) {
+        right: 0;
+        top: 50%;
+        margin-top: -10px;
+        -webkit-animation-delay: 0.65s;
+    }
+    
+    .loadEffect span:nth-child(6) {
+        right: 14px;
+        bottom: 14px;
+        -webkit-animation-delay: 0.78s;
+    }
+    
+    .loadEffect span:nth-child(7) {
+        bottom: 0;
+        left: 50%;
+        margin-left: -10px;
+        -webkit-animation-delay: 0.91s;
+    }
+    
+    .loadEffect span:nth-child(8) {
+        bottom: 14px;
+        left: 14px;
+        -webkit-animation-delay: 1.04s;
+    }
+    /*result page*/
+    
+    .seq {
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    
+    #gotop {
+        cursor: pointer;
+        display: none;
+        width: 55px;
+        height: 55px;
+        position: fixed;
+        right: 50px;
+        bottom: 50px;
+        background: url('images/backtop2013.png') no-repeat -70px 0px;
+    }
+    </style>
+    <!-- Google analysis -->
+<!--     <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-79942504-2', 'auto');
+    ga('send', 'pageview');
+    </script> -->
+</head>

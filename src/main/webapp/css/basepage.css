@@ -1,0 +1,655 @@
+@CHARSET "UTF-8";
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 微软雅黑, 宋体;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td,
+figure,
+img,
+div {
+    margin: 0px;
+    padding: 0px;
+    font-family: 微软雅黑, 宋体;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* 统一的响应式宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* 统一的响应式宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width100Percent {
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+/* 统一的响应式200px宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width200 {
+    width: 200px;
+    margin: 0 auto;
+    padding: 0px;
+    border: 0px;
+}
+
+
+/* 统一的响应式300px宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width300 {
+    width: 300px;
+    margin: 0 auto;
+    padding: 0px;
+    border: 0px;
+}
+
+
+/* 统一的响应式400px宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width400 {
+    width: 400px;
+    margin: 0 auto;
+    padding: 0px;
+    border: 0px;
+}
+
+
+/* 统一的响应式500px宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width500 {
+    width: 500px;
+    margin: 0 auto;
+    padding: 0px;
+    border: 0px;
+}
+
+
+/* 统一的响应式600px宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width600 {
+    width: 600px;
+    margin: 0 auto;
+    padding: 0px;
+    border: 0px;
+}
+
+
+/* 统一的响应式700px宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width700 {
+    width: 700px;
+    margin: 0 auto;
+    padding: 0px;
+    border: 0px;
+}
+
+
+/* 统一的响应式800px宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width800 {
+    width: 800px;
+    margin: 0 auto;
+    padding: 0px;
+    border: 0px;
+}
+
+
+/* 统一的响应式900px宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width900 {
+    width: 900px;
+    margin: 0 auto;
+    padding: 0px;
+    border: 0px;
+}
+
+
+/* 统一的响应式1000px宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width1000 {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0px;
+    border: 0px;
+}
+
+
+/* 统一的响应式1100px宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width1100 {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* 统一的响应式1150px宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width1150 {
+    width: 1150px;
+    margin: 0 auto;
+}
+
+
+/* 统一的响应式900px宽度class选项引用↓↓↓↓↓↓↓ */
+
+.G-Width900 {
+    width: 900px;
+    margin: 0 auto;
+}
+
+
+/* 统一的行高占父容器的100%  class选项引用↓↓↓↓↓↓↓ */
+
+.G-LineHeight100Percent {
+    height: 100%;
+    line-height: 100%;
+    display: inline-table;
+    vertical-align: middle;
+}
+
+
+/* 统一的行高50px class选项引用↓↓↓↓↓↓↓ */
+
+.G-LineHeight50 {
+    height: 50px;
+    line-height: 50px;
+}
+
+
+/* 统一的行高100px class选项引用↓↓↓↓↓↓↓ */
+
+.G-LineHeight100 {
+    height: 100px;
+    line-height: 100px;
+}
+
+
+/* 统一的行高150px class选项引用↓↓↓↓↓↓↓ */
+
+.G-LineHeight150 {
+    height: 150px;
+    line-height: 150px;
+}
+
+
+/* 统一的内联样式 class选项引用↓↓↓↓↓↓↓ */
+
+.G-inline-table {
+    display: inline-table;
+}
+
+
+/* 统一的内联样式 class选项引用↓↓↓↓↓↓↓ */
+
+.G-inline-block {
+    display: inline-block;
+}
+
+
+/* 统一的14px字体 class选项引用↓↓↓↓↓↓↓ */
+
+.G-font-size-14 {
+    font-size: 14px;
+}
+
+
+/* 统一的内联样式 class选项引用↓↓↓↓↓↓↓ */
+
+.G-GrayWell {
+    background: #fcfcfc;
+    border: 1px solid #e0e0e0;
+}
+
+
+/* 统一的内联样式 class选项引用↓↓↓↓↓↓↓ */
+
+.G-GrayStrongWell {
+    background: #f5f5f5;
+    border: 1px solid blue;
+}
+
+
+/* 统一的内联样式 class选项引用↓↓↓↓↓↓↓ */
+
+.G-OrangeWell {
+    background: #fcfcfc;
+    border: 3px solid orange;
+    padding: 5px;
+}
+
+
+/* 统一的背景样式 class选项引用↓↓↓↓↓↓↓ */
+
+.G-bg-red {
+    /* background: #C70808; */
+    background: url("../images/T1y221Fo8bXXbcg1HR-615-200.png") center repeat;
+    color: white;
+}
+
+
+/* 顶部 */
+
+.G-header {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.G-header .panning {
+    width: 100%;
+    height: 100%;
+    background: url('../images/clouds.jpg') #679eba;
+}
+
+
+}
+.G-header .logo {
+    height: 130px;
+    line-height: 130px;
+    width: 1200px;
+    margin: 0px auto;
+}
+.G-header .logo a {
+    display: inline-block;
+    height: 130px;
+    line-height: 130px;
+    height: 130px;
+}
+.G-header .tips {
+    text-align: right;
+    line-height: 30px;
+    height: 30px;
+    width: 1200px;
+    margin: 0px auto;
+}
+.G-header .tips span {
+    margin: 0px 10px;
+}
+
+/* 导航 */
+.G-nav {
+    width: 100%;
+    font-size: 20px;
+    line-height: 50px;
+    background: #c40000;
+}
+#lampNav {
+    width: 1200px;
+    margin: 0px auto;
+}
+
+/*下边框*/
+.lava_with_border {
+    position: relative;
+    height: 50px;
+    line-height: 70px;
+    padding: 0px 15px;
+    list-style: none;
+}
+.lava_with_border li {
+    float: left;
+    height: 50px;
+    line-height: 70px;
+}
+.lava_with_border li a {
+    float: left;
+    color: white;
+    font-size: 20px;
+    line-height: 50px;
+    text-decoration: none;
+    position: relative;
+    z-index: 3;
+    margin: auto 20px;
+}
+.lava_with_border li a:hover {
+    text-decoration: none;
+    color: white;
+}
+.lava_with_border li.back {
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    z-index: 2;
+    background: #760000;
+}
+
+/* 汉字缩进2个汉字 ↓↓↓↓↓↓↓ */
+.text-indent2em {
+    text-indent: 2em;
+}
+
+/* 汉字缩进2个汉字 ↑↑↑↑↑↑↑ */
+
+/* 字体为200px ↓↓↓↓↓↓↓ */
+.font200 {
+    font-size: 200px;
+}
+
+/* 字体为200px ↑↑↑↑↑↑↑ */
+
+/* 统一的外边距距离顶部class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop {
+    margin-top: 50px;
+}
+
+/* 统一的外边距距离顶部class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的外边距距离顶部负50px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginBottom-50 {
+    margin-bottom: -50px;
+}
+
+/* 统一的外边距距离顶部负50px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的外边距距离顶部负20px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginBottom-20 {
+    margin-bottom: -20px;
+}
+
+/* 统一的外边距距离顶部负20px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的外边距距离底部置为 0px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginBottom0 {
+    margin-bottom: 0px;
+}
+
+/* 统一的外边距距离顶部负10px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginBottom-10 {
+    margin-bottom: -10px;
+}
+
+/* 统一的外边距距离顶部负10px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的外边距距离顶部10px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop10 {
+    margin-top: 10px;
+}
+
+/* 统一的外边距距离顶部 10px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的外边距距离顶部和底部10px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTopBottom10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* 统一的外边距距离顶部和底部 10px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的外边距距离顶部20px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop20 {
+    margin-top: 20px;
+}
+
+/* 统一的外边距距离顶部 20px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的外边距距离顶部50px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop50 {
+    margin-top: 50px;
+}
+
+/* 统一的外边距距离顶部 50px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的外边距距离顶部100px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop100 {
+    margin-top: 100px;
+}
+
+/* 统一的外边距距离顶部 100px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的外边距距离顶部150px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop150 {
+    margin-top: 150px;
+}
+
+/* 统一的外边距距离顶部 150px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的内边距距离顶部20px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingTop20 {
+    padding-top: 20px;
+}
+
+/* 统一的内边距距离顶部20px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的内边距距离顶部50px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingTop {
+    padding-top: 50px;
+}
+.G-PaddingTop50 {
+    padding-top: 50px;
+}
+
+/* 统一的内边距距离顶部50px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的内边距距离顶部100px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingTop100 {
+    padding-top: 100px;
+}
+
+/* 统一的内边距距离顶部100pxclass选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的内边距距离顶部150px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingTop150 {
+    padding-top: 150px;
+}
+
+/* 统一的内边距距离顶部150pxclass选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的文章格式 */
+.G-Article {
+    font-size: 16px;
+    line-height: 30px;
+}
+.G-Article p {
+    margin: 10px 0px;
+}
+.G-Article article,
+.G-Article aside,
+.G-Article details,
+.G-Article figcaption,
+.G-Article figure,
+.G-Article footer,
+.G-Article header,
+.G-Article hgroup,
+.G-Article main,
+.G-Article nav,
+.G-Article section,
+.G-Article summary {
+    display: block;
+}
+.G-Article audio,
+.G-Article canvas,
+.G-Article progress,
+.G-Article video {
+    display: inline-block;
+    vertical-align: baseline;
+}
+.G-Article [hidden],
+.G-Article template {
+    display: none;
+}
+.G-Article a {
+    background: transparent;
+}
+.G-Article a:active,
+.G-Article a:hover {
+    outline: 0;
+}
+.G-Article abbr[title] {
+    border-bottom: 1px dotted;
+}
+.G-Article b,
+.G-Article strong {
+    font-weight: bold;
+}
+.G-Article dfn {
+    font-style: italic;
+}
+.G-Article h1 {
+    margin: .67em 0;
+    font-size: 2em;
+}
+.G-Article mark {
+    color: #000;
+    background: #ff0;
+}
+.G-Article small {
+    font-size: 80%;
+}
+.G-Article sub,
+.G-Article sup {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
+}
+.G-Article sup {
+    top: -.5em;
+}
+.G-Article sub {
+    bottom: -.25em;
+}
+.G-Article img {
+    border: 0;
+}
+.G-Article figure {
+    margin: 1em 40px;
+}
+.G-Article hr {
+    height: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.G-Article pre {
+    overflow: auto;
+}
+.G-Article code,
+.G-Article kbd,
+.G-Article pre,
+.G-Article samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+.G-Article h1,
+.G-Article h2,
+.G-Article h3,
+.G-Article h4,
+.G-Article h5,
+.G-Article h6,
+.G-Article .h1,
+.G-Article .h2,
+.G-Article .h3,
+.G-Article .h4,
+.G-Article .h5,
+.G-Article .h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+/* 统一的文章结束 */
+p {
+    margin: 0 0 10px;
+}
+
+/*General Mosaic Styles*/
+.mosaic-block a {
+    color: #fafafa;
+    text-decoration: none;
+}
+.mosaic-block a:HOVER {
+    color: white;
+    text-decoration: none;
+}
+.mosaic-block {
+    color: #fafafa;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    width: 260px;
+    height: 260px;
+    background: #fcfcfc url(../img/progress.gif) no-repeat center center;
+    border: 1px solid #fff;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.mosaic-backdrop {
+    color: #fafafa;
+    display: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: #fcfcfc;
+}
+.mosaic-overlay {
+    color: #fafafa;
+    display: none;
+    z-index: 5;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+}
+
+/* 顶部的工具 */
+.TopMenuContainer {
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    min-width: 1200px;
+    background: #f0f0f0;
+}
+#smoothmenu1 {
+    width: 1200px;
+    margin: 0px auto;
+}
+
+/*container*/
+.container {
+    min-height: 600px;
+}
+small,
+.help-block {
+    color: red;
+    font-weight: bolder;
+}
+p {
+    word-wrap: break-word;
+    word-break: normal;
+}

@@ -1,0 +1,155 @@
+#parse("/WEB-INF/views/container/header.html")
+
+<body>
+	<div class="container">
+		#parse("/WEB-INF/views/container/omenu.html")
+		<h2>
+			<strong class="text-uppercase"><span
+				class="glyphicon glyphicon-info-sign"> </span>Result</strong>
+		</h2>
+
+		<div class="clearfix"></div>
+		<hr class="row  G-MarginTop20 ">
+		<!-- 结果 -->
+		<div class="G-MarginTop20">
+
+			<!-- 标题 -->
+			<div class="">
+				<p class="text-default alert alert-info">Here is the known
+					miRNA targets in miRTarBase V7.0</p>
+				#if(${knownList.size()}>0)
+				<table class="table table-hover text-left" data-toggle="table"
+					data-sortable="true" data-pagination="true"
+					data-show-columns="true" data-striped="true" data-search="true"
+					data-show-export="true">
+					<thead>
+						<tr>
+							#if(${parameter.type} == 1)
+							<th class="col-xs-2" data-sortable="true">Number</th>
+							<th class="col-xs-2" data-sortable="true">miRNA name</th>
+							<th class="col-xs-8" data-sortable="true">Gene Id</th>
+							<th class="col-xs-2" data-sortable="true">Gene symbol</th> 
+							#else
+							<th class="col-xs-2" data-sortable="true">Number</th>
+							<!--<th class="col-xs-8" data-sortable="true">MiRNA Id</th>-->							
+							<th class="col-xs-2" data-sortable="true">MiRNA name</th>
+							<th class="col-xs-8" data-sortable="true">Gene Id</th>
+							<th class="col-xs-2" data-sortable="true">Gene symbol(Refseq_ID)</th> 
+							 #end
+
+						</tr>
+					</thead>
+					<tbody>
+						<!-- foreach -->
+						#foreach($d_s in $knownList)
+						<tr>
+
+							#if(${parameter.type} == 1)
+							<td class="col-xs-2">$!d_s.rank</td>
+							<td class="col-xs-2">$!d_s.miRNAName</td>
+							<td class="col-xs-2">$!d_s.geneId</td>
+							<td class="col-xs-2">$!d_s.geneName</td>
+							 #else
+							<td class="col-xs-2">$!d_s.rank</td>
+							<!--<td class="col-xs-8">$!d_s.miRNAId</td>  -->
+							<td class="col-xs-2">$!d_s.miRNAName</td> 
+							<td class="col-xs-8">$!d_s.geneId</td>
+							<td class="col-xs-2">$!d_s.geneName</td>#end
+						</tr>
+						<!-- end foreach -->
+						#end
+					</tbody>
+				</table>
+				#else
+				<p class="text-default alert alert-danger">sorry, there is no
+					result for the sequence</p>
+				#end
+				<!-- end if -->
+			</div>
+
+			<!-- 标题 -->
+			<div class="">
+				<p class="text-default alert alert-info">Here is the recommended
+					Top 50 results calculated by miRTMC</p>
+				#if(${predictdScoreList.size()}>0)
+				<table class="table table-hover text-left" data-toggle="table"
+					data-sortable="true" data-pagination="true"
+					data-show-columns="true" data-striped="true" data-search="true"
+					data-show-export="true">
+					<thead>
+						<tr>
+							#if(${parameter.type} == 1)
+
+							<th class="col-xs-2" data-sortable="true">Rank</th>
+							<th class="col-xs-2" data-sortable="true">MiRNA name</th>
+							<th class="col-xs-8" data-sortable="true">Gene Id</th>
+							<th class="col-xs-2" data-sortable="true">Gene name</th>
+							<th class="col-xs-2" data-sortable="true">Score</th> 
+							#else
+
+							<th class="col-xs-2" data-sortable="true">Rank</th>
+							<th class="col-xs-2" data-sortable="true">MiRNA name</th>
+							<th class="col-xs-8" data-sortable="true">Gene Id</th>
+							<th class="col-xs-2" data-sortable="true">Gene symbol(Refseq_ID)</th>
+							<!--<th class="col-xs-8" data-sortable="true">MiRNA Id</th> -->	
+							<th class="col-xs-2" data-sortable="true">Score</th> #end
+						</tr>
+					</thead>
+					<tbody>
+						<!-- foreach -->
+						#foreach($d_s in $predictdScoreList)
+						<tr>
+							#if(${parameter.type} == 1)
+
+							<td class="col-xs-2">$!d_s.rank</td>
+							<td class="col-xs-2">$!d_s.miRNAName</td>
+							<td class="col-xs-8">$!d_s.geneId</td>
+							<td class="col-xs-2">$!d_s.geneName</td>
+							<td class="col-xs-2">$!d_s.score</td> 
+							#else 
+							<td class="col-xs-2">$!d_s.rank</td>
+							<td class="col-xs-2">$!d_s.miRNAName</td>
+							<td class="col-xs-8">$!d_s.geneId</td>
+							<td class="col-xs-2">$!d_s.geneName</td>
+							<!-- <td class="col-xs-8">$!d_s.miRNAId</td> -->		
+							<td class="col-xs-2">$!d_s.score</td> 
+							#end
+						</tr>
+						<!-- end foreach -->
+						#end
+					</tbody>
+				</table>
+				#else
+				<p class="text-default alert alert-danger">sorry, there is no
+					result for the sequence</p>
+				#end
+				<!-- end if -->
+			</div>
+
+			<div class="clearfix"></div>
+			<hr class="row  G-MarginTop20 ">
+		</div>
+		#include("/WEB-INF/views/container/footer.html")
+	</div>
+	<script type="text/javascript">
+    jQuery.noConflict();
+    (function($) {
+        $(function() {
+            //发送邮件
+            $("#send-to-email").on(
+                "click",
+                function() {
+                    $("#sendemail-form").bootstrapValidator();
+                    var isValid = $('#sendemail-form').data(
+                        'bootstrapValidator').isValid();
+                    console.log(isValid);
+                    if (isValid) {
+                        $("#sendemail-form").submit();
+                    }
+                });
+        })
+    })(jQuery)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="myModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="panel panel-danger">
+                <div class="panel-heading">Warning</div>
+                <div class="panel-body">
+                    <p id="info-body"></p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-danger" id="delete">删除</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery -->
+<div class="clearfix"></div>
+<hr class="row  G-MarginTop20 ">
+<div id="gotop"></div>
+<div id="bottomfooter">
+    <div class="column-last text-center">
+        <p>
+            <a href="index/" target="__blank">Home</a> | Copyright &copy; 2019 - CSU-Bioinformatics Group | All Rights Reserved
+    </div>
+    <a href="#" class="totop"></a>
+</div>
+<script src="js/bootstrapValidator/bootstrapValidator.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+(function($) {
+    function goTop() {
+        $(window).scroll(function(e) {
+            //若滚动条离顶部大于100元素
+            if ($(window).scrollTop() > 100)
+                $("#gotop").fadeIn(1000); //以1秒的间隔渐显id=gotop的元素
+            else
+                $("#gotop").fadeOut(1000); //以1秒的间隔渐隐id=gotop的元素
+        });
+    };
+
+    $(function() {
+        //点击回到顶部的元素
+        $("#gotop").click(function(e) {
+            //以1秒的间隔返回顶部
+            $('body,html').animate({
+                scrollTop: 0
+            }, 1000);
+        });
+        $("#gotop")
+            .mouseover(
+                function(e) {
+                    $(this)
+                        .css("background",
+                            "url('images/backtop2013.png') no-repeat 0px 0px");
+                });
+        $("#gotop")
+            .mouseout(
+                function(e) {
+                    $(this)
+                        .css("background",
+                            "url('images/backtop2013.png') no-repeat -70px 0px");
+                });
+        goTop(); //实现回到顶部元素的渐显与渐隐
+    })
+})(jQuery)
+</script>

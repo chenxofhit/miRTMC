@@ -1,0 +1,23 @@
+#parse("/WEB-INF/views/container/header.html")
+
+<body>
+	<div class="container">
+		#parse("/WEB-INF/views/container/omenu.html")
+		<div class=" message">
+			<div class="text-default alert alert-success G-MarginTop20">
+				<span class="glyphicon glyphicon-ok"></span> $!message
+			</div>
+		</div>
+		#include("/WEB-INF/views/container/footer.html")
+	</div>
+	<script type="text/javascript">
+		jQuery.noConflict();
+		(function($) {
+			$(function() {
+
+			})
+		})(jQuery)
+	</script>
+</body>
+
+</html>

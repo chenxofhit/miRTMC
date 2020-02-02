@@ -1,0 +1,22 @@
+#parse("/WEB-INF/views/container/header.html")
+
+<body>
+    <div class="container">
+        #parse("/WEB-INF/views/container/omenu.html")
+        <div class="row message">
+            <p class="text-error"><span class="text-default alert alert-danger"><span
+					class="glyphicon glyphicon-remove"></span>$!view.msg</span>. Please submit your job again...
+                <!--  <a href="index">return</a> -->
+            </p>
+        </div>
+        #include("/WEB-INF/views/container/footer.html")
+    </div>
+    <script type="text/javascript">
+    jQuery.noConflict();
+    (function($) {
+        $(function() {})
+    })(jQuery)
+    </script>
+</body>
+
+</html>

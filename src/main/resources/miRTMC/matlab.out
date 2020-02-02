@@ -1,0 +1,75 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2018 The MathWorks, Inc.
+                   R2018b (9.5.0.944444) 64-bit (glnxa64)
+                              August 28, 2018
+
+ 
+有关在线文档，请参阅 https://www.mathworks.com/support
+有关产品信息，请访问 www.mathworks.com。
+ 
+number of miRNA: 150
+number of gene: 101
+number of known miRNA targets: 1155
+number of rows in adjacency matrix H (n1): 251
+number of columns in adjacency matrix H (n2): 251
+percentage of samples (percent): 0.1
+maximun number of iterations for find best rank (maxiter): 20
+
+Solving by ADMM using R4SVD...
+lambda=   10, gama= 1.618000e+00, alpha= 1.000000e-03, tol= 1.000000e-04
+   1, rank:  1 res: 1.16e-01 percent: 0.10 bestAUC: 0.49348 bestAUCrank:   1, bestmaxpre: 0.02609, bestmaxprerank:   1, bestcombinerank:   1, AUC:  0.49348, maxpre: 0.02609
+时间已过 0.157390 秒。
+   2, rank:  2 res: 2.65e-01 percent: 0.10 bestAUC: 0.67093 bestAUCrank:   2, bestmaxpre: 0.04348, bestmaxprerank:   2, bestcombinerank:   2, AUC:  0.67093, maxpre: 0.04348
+时间已过 0.016152 秒。
+   3, rank:  5 res: 2.60e-01 percent: 0.10 bestAUC: 0.71543 bestAUCrank:   5, bestmaxpre: 0.05217, bestmaxprerank:   5, bestcombinerank:   5, AUC:  0.71543, maxpre: 0.05217
+时间已过 0.012605 秒。
+   4, rank:  7 res: 3.22e-01 percent: 0.10 bestAUC: 0.71543 bestAUCrank:   5, bestmaxpre: 0.08696, bestmaxprerank:   7, bestcombinerank:   5, AUC:  0.65355, maxpre: 0.08696
+时间已过 0.009436 秒。
+   5, rank: 10 res: 3.42e-01 percent: 0.10 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.08696, bestmaxprerank:   7, bestcombinerank:  10, AUC:  0.74294, maxpre: 0.05217
+时间已过 0.028710 秒。
+   6, rank: 13 res: 3.70e-01 percent: 0.10 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.08696, bestmaxprerank:   7, bestcombinerank:  10, AUC:  0.69388, maxpre: 0.06957
+时间已过 0.008087 秒。
+   7, rank: 16 res: 3.93e-01 percent: 0.19 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.08696, bestmaxprerank:   7, bestcombinerank:  10, AUC:  0.73633, maxpre: 0.03768
+时间已过 0.007161 秒。
+   8, rank: 19 res: 4.10e-01 percent: 0.19 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.08696, bestmaxprerank:   7, bestcombinerank:  10, AUC:  0.70455, maxpre: 0.02609
+时间已过 0.007890 秒。
+   9, rank: 22 res: 4.27e-01 percent: 0.19 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.10524, bestmaxprerank:  22, bestcombinerank:  10, AUC:      NaN, maxpre: 0.10524
+时间已过 0.009038 秒。
+  10, rank: 26 res: 4.44e-01 percent: 0.19 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.10524, bestmaxprerank:  22, bestcombinerank:  10, AUC:  0.68526, maxpre: 0.02609
+时间已过 0.008459 秒。
+  11, rank: 29 res: 4.57e-01 percent: 0.19 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.10524, bestmaxprerank:  22, bestcombinerank:  10, AUC:  0.70562, maxpre: 0.03913
+时间已过 0.007850 秒。
+  12, rank: 34 res: 4.71e-01 percent: 0.27 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.10524, bestmaxprerank:  22, bestcombinerank:  10, AUC:  0.68318, maxpre: 0.02174
+时间已过 0.007587 秒。
+  13, rank: 36 res: 4.84e-01 percent: 0.27 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.10524, bestmaxprerank:  22, bestcombinerank:  10, AUC:  0.69753, maxpre: 0.02609
+时间已过 0.008778 秒。
+  14, rank: 40 res: 4.96e-01 percent: 0.27 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.10524, bestmaxprerank:  22, bestcombinerank:  10, AUC:  0.69746, maxpre: 0.03478
+时间已过 0.015361 秒。
+  15, rank: 43 res: 5.08e-01 percent: 0.27 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.10524, bestmaxprerank:  22, bestcombinerank:  10, AUC:  0.71266, maxpre: 0.04348
+时间已过 0.009417 秒。
+  16, rank: 46 res: 5.18e-01 percent: 0.27 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.10524, bestmaxprerank:  22, bestcombinerank:  10, AUC:  0.70585, maxpre: 0.03478
+时间已过 0.015425 秒。
+  17, rank: 50 res: 5.28e-01 percent: 0.34 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.10524, bestmaxprerank:  22, bestcombinerank:  10, AUC:  0.71549, maxpre: 0.03478
+时间已过 0.011766 秒。
+  18, rank: 53 res: 5.37e-01 percent: 0.34 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.10524, bestmaxprerank:  22, bestcombinerank:  10, AUC:  0.71365, maxpre: 0.04348
+时间已过 0.009868 秒。
+  19, rank: 56 res: 5.45e-01 percent: 0.34 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.10524, bestmaxprerank:  22, bestcombinerank:  10, AUC:  0.71642, maxpre: 0.03913
+时间已过 0.019311 秒。
+  20, rank: 57 res: 5.52e-01 percent: 0.34 bestAUC: 0.74294 bestAUCrank:  10, bestmaxpre: 0.10524, bestmaxprerank:  22, bestcombinerank:  10, AUC:  0.72379, maxpre: 0.04348
+时间已过 0.010555 秒。
+number of rows in adjacency matrix H (n1): 251
+number of columns in adjacency matrix H (n2): 251
+maximun number of iterations in this step(maxiter): 200
+lambda=   10, gama= 1.618000e+00, alpha= 1.000000e-03, tol= 1.000000e-04
+iteration    1, rank is  1, rel. residual: 1.18e-01
+iteration    2, rank is  2, rel. residual: 2.66e-01
+iteration    3, rank is  6, rel. residual: 2.63e-01
+iteration    4, rank is  8, rel. residual: 3.19e-01
+iteration    5, rank is 10, rel. residual: 3.41e-01
+时间已过 0.074464 秒。
+RSVD: The recovered rank is 251
+RSVD: The relative error on Omega is: 2.882739e-03
+RSVD: The relative recovery error is: 1.606623e+00
+RSVD: The relative recovery in the spectral norm is: 1.233990e+00
+prediction finished!

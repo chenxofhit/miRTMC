@@ -1,0 +1,280 @@
+#parse("/WEB-INF/views/container/header.html")
+
+<body>
+	<div class="container">
+		#parse("/WEB-INF/views/container/menu.html")
+		<div class="tab-content">
+			<div class="tab-pane active fade in" id="index">
+				<h2>
+					<strong class="text-uppercase"><span
+						class="glyphicon glyphicon-info-sign"> </span>miRTMC</strong>
+				</h2>
+				<hr class="G-MarginTop20">
+				<!-- <div class="row">
+                    <p class="text-default alert alert-info G-MarginTop20 ldap-brief">
+                        Long noncoding RNAs are a biggest class of non-coding RNA with greater than 200nt in length which can regulate gene expression in different levels including transcriptional, pos-transcriptional and epigenetic regulation. Identifing lncRNA-disease association would contribute to dissect the complex mechanisms of disease pathogenesis. Here, we developed a new lncRNA-disease association predictor, LDAP (lncRNA-disease association predictor), by integrating multiple biological data resources. The LDAP provides two ways to input your data: a lncRNA sequence or a txt file with multiple sequences with FASTA format.
+                    </p>
+                </div> -->
+
+				<div class="radio-group">
+
+					<form id="mirtmc-calculate" class="form-horizontal"
+						action="${BAST_PATH}/index/submit" method="post">
+
+						<div class="row">
+							<label for="radio-group" class="formbuilder-radio-group-label">Select
+								an option to search: </label> <input name="option" id="option" value="1"
+								type="radio" checked="checked"><label for="radio-group">MiRNA
+								name</label> <input name="option" id="option" value="2" type="radio"><label
+								for="radio-group">Refseq_ID</label> <input name="option"
+								id="option" value="3" type="radio"><label
+								for="radio-group">Gene symbol</label> <input name="option"
+								id="option" value="4" type="radio"><label
+								for="radio-group">Entrez Gene ID</label>
+						</div>
+
+						<div class="col-xs-8 form-group field-input" id="selfinput">
+							<input type="text"
+								placeholder="Please input the value according to the above selected option"
+								class="form-control" name="content" maxlength="20" id="input"
+								onblur="checkQueryKeyExsit();">
+						</div>
+
+						<div class="col-xs-8" id="fastainput">
+							<div class="row">
+								<span class="text-info">OR, please input the
+									LncSeq(length≥200 , one sequence, <a
+									href="http://en.wikipedia.org/wiki/Fasta_format"
+									target="__blank">FASTA Format</a>):
+								</span><a class="btn btn-link" id="example" style="margin-left: 10%">load
+									example</a>
+							</div>
+							<textarea style="height: 300px;" type="text"
+								placeholder="Please input the LncSeqs you want to search in fasta format"
+								class="form-control" id="sequence" name="sequence"></textarea>
+							<!-- email -->
+							<div class="row form-group G-MarginTop20" id="email_div1">
+								<div class="col-xs-9 text-info">
+									Email: (mandatory, where results will be sent to.) <span
+										class="text-default"><input type="text" id="email"
+										name="email"></span>
+								</div>
+							</div>
+
+						<hr class="row ">
+						</div>
+
+						<div class="col-xs-8" >
+						<div class="row">
+								<button type="submit" class="btn btn-info btn-small pull-left"
+									id="submitbtn">Submit</button>
+						</div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+			<div class="tab-pane" id="readme">
+				<h2>
+					<strong class="text-uppercase"><span
+						class="glyphicon glyphicon-info-sign"> </span>Read Me</strong>
+				</h2>
+				<hr class="G-MarginTop20">
+				#include("/WEB-INF/views/container/readme.html")
+			</div>
+			<div class="tab-pane" id="about">
+				<h2>
+					<strong class="text-uppercase"><span
+						class="glyphicon glyphicon-info-sign"> </span>About</strong>
+				</h2>
+				<hr class="G-MarginTop20">
+				<p class="text-default alert alert-info G-MarginTop20 ldap-brief">miRTMC
+					is a non-profit tool used to provide predict severs for
+					miRNA target.</p>
+				<p class="text-default alert alert-info G-MarginTop20 ldap-brief">Questions
+					and comments on the tool and suggestions for improvement to the
+					website are always welcome.</p>
+				<h3>
+					<strong><span class="glyphicon  glyphicon-envelope"></span>
+						Please contact:</strong>
+				</h3>
+				<p>
+					Hui Jiang: <a href="mailto:jianghui@csu.edu.cn">jianghui@csu.edu.cn</a>
+				<p>
+					Xiang chen:<a href="mailto:  @csu.edu.cn"> chenxofhit@@gmail.com</a>
+				<p>
+					Jianxin Wang:<a href="mailto:jxwang@mail.csu.edu.cn">
+						jxwang@mail.csu.edu.cn</a>
+				<p>
+					Min Li: <a href="mailto:limin@mail.csu.edu.cn">limin@mail.csu.edu.cn</a>
+			</div>
+			<div class="tab-pane" id="result">
+				<h2>
+					<strong class="text-uppercase"><span
+						class="glyphicon glyphicon-info-sign"> </span>Result</strong>
+				</h2>
+				<hr class="G-MarginTop20">
+				<p class="text-default alert alert-info G-MarginTop20 ldap-brief">You
+					can check out the result for your submit by the email and jobid</p>
+				<!-- <div class="row">
+                   <div class="col-xs-1"></div> -->
+				<form class="form-horizontal col-xs-10"
+					action="${BAST_PATH}/checkresult" method="post" id="check-result">
+					<div class="row form-group G-MarginTop20">
+						Email: <input type="text" id="check_email" name="check_email"
+							placeholder="input your email" data-bv-notempty
+							data-bv-emailAddress
+							data-bv-message="please input the right email">
+					</div>
+					<div class="row form-group G-MarginTop20">
+						Jobid: <input type="text" id="check_jobid" name="check_jobid"
+							placeholder="input your jobid" data-bv-notempty data-bv-numeric
+							data-bv-message="please input the right jobid">
+					</div>
+					<button type="submit" class="btn btn-info btn-small" id="result-go">GO</button>
+				</form>
+			</div>
+		</div>
+		#include("/WEB-INF/views/container/footer.html")
+	</div>
+	<script type="text/javascript">
+
+	jQuery(function($) {
+			$("#mirtmc-calculate input[type=radio]").change(function() {
+				$("#fastainput").show();
+				$("#selfinput").show();
+			});
+		})
+
+		function checkQueryKeyExsit() {
+			jQuery(function($) {
+				$
+						.ajax({
+							url : "${BAST_PATH}/checkQueryKeyExsit.json",
+							type : "POST",
+							data : {
+								option : $("#mirtmc-calculate input[type='radio']:checked").val(),
+								content : $("#input").val(),
+							},
+							success : function(response) {
+								if (response == true) {
+									$("#fastainput").hide();
+									$("#selfinput").show();
+								} else {
+									$("#fastainput").show();
+									$("#selfinput").hide();
+								}
+							},
+							error : function() {
+								alert("System error, please try it later...");
+							}
+						})
+			})
+		}
+
+		jQuery.noConflict();
+		(function($) {
+
+		
+
+			//显示提示消息
+			//info表示要提示的信息
+			function alert_info(info) {
+				$('#myModal').modal('show');
+				$('#info-body').html(info);
+			}
+
+			//去除空格
+			//自定义trim，防止trim失效
+			function trimStr(str) {
+				return str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "");
+			}
+
+			$(function() {
+				//提交计算校验
+				$("#submitbtn")
+						.on(
+								"click",
+								function() {
+									
+									if($("#fastainput").is(":hidden")){
+										return true;	
+									} 
+
+									var emailAddress = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+									var sequence = trimStr($("#sequence").val());
+									var email = trimStr($("#email").val());
+
+									alert(sequence + email);
+/* 									if ($('input[name="file"]').prop('files').length <= 0
+											&& sequence.length <= 0) {
+										alert_info("Please input a sequence or a file...");
+										return false;
+									} else { */
+										if ($("#email_div").css("display") == "block") {
+											if (emailAddress.test(email)) {
+												$("#mirtmc-calculate").submit();
+												// return true;
+											} else {
+												alert_info("The email is not valid");
+												//alert("The email is not valid");
+												$("#email_div").focus();
+												return false;
+											}
+										} else if (sequence.length >= 200) {
+											var sequence_pattern = new RegExp(
+													"^[agctAGCT]*$");
+											var arr = sequence
+													.split(/\r\n|\r|\n/);
+											console.log(arr);
+											if (arr.length == 2) {
+												var LncSeq = trimStr(arr[1]);
+												// console.log(trimStr(arr[1])));
+												console.log(sequence_pattern
+														.test(LncSeq));
+												if (sequence_pattern
+														.test(LncSeq)) {
+													// return false;
+													$("#mirtmc-calculate")
+															.submit();
+												} else {
+													alert_info("The sequence has invalid characters");
+													return false;
+												}
+											} else {
+												alert_info("The sequence is not valid");
+												return false;
+											}
+										} else {
+											alert_info("The sequence or the file is not valid");
+											//alert("The sequence or the email is not valid");
+											return false;
+										}
+/* 									} */
+								});
+
+				//查看提交结果
+				$("#check-result").on(
+						"click",
+						function() {
+							$("#check-result").bootstrapValidator();
+							var isValid = $('#check-result').data(
+									'bootstrapValidator').isValid();
+							if (isValid) {
+								$("#check-result").submit();
+							}
+						});
+
+				$("#example")
+						.click(
+								function() {
+									var example = ">7SK\nGGATGTGAGGGCGATCTGGCTGCGACATCTGTCACCCCATTGATCGCCAGGGTTGATTCGGCTGATCTGGCTGGCTAGGCGGGTGTCCCCTTCCTCCCTCACCGCTCCATGTGCGTCCCTCCCGAAGCTGCGCGCTCGGTCGAAGAGGACGACCATCCCCGATAGAGGAGGACCGGTCTTCGGTCAAGGGTATACGAGTAGCTGCGCTCCCCTGCTAGAACCTCCAAACAAGCTCTCAAGGTCCATTTGTAGGAGAACGTAGGGTAGTCAAGCTTCCAAGACTCCAGACACATCCAAATGAGGCGCTGCATGTGGCAGTCTGCCTTTCTTTT";
+									$("#sequence").val(example);
+									$("#sequence")[0].focus();
+								});
+			})
+		})(jQuery)
+	</script>
+</body>
+
+</html>

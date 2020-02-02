@@ -1,0 +1,6 @@
+# mac
+.DS_Store
+
+# Two extra large files > 100MB
+/src/main/resources/miRTMC/bmMat.txt
+/src/main/resources/miRTMC/Result_MTmatrix2.txt

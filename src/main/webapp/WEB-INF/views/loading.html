@@ -1,0 +1,58 @@
+#parse("/WEB-INF/views/container/header.html")
+
+<body>
+    <div class="container">
+        #parse("/WEB-INF/views/container/omenu.html")
+        <div class="message">
+            <div class="text-default alert alert-success G-MarginTop20">
+                <span class="glyphicon glyphicon-ok"></span>$!message
+            </div>
+            <div class="loadEffect">
+                <!-- <span></span> <span></span> <span></span> <span></span> <span></span>
+                <span></span> <span></span> <span></span> -->
+                <img alt="loading" src="${BAST_PATH}/images/01-progress.gif" class="img-responsive">
+            </div>
+            <!-- <p class="text-info">
+				<span class="text-default alert alert-info" id="status"> </span>.
+			</p> -->
+        </div>
+        <hr class="row  G-MarginTop20 "> #if(!$email || $email.length()==0)
+        <input class="email" value="email" type="hidden" /> #end #include("/WEB-INF/views/container/footer.html")
+    </div>
+    <script type="text/javascript">
+    jQuery.noConflict();
+    (function($) {
+        $(function() {
+            setInterval(
+                function() {
+                    $
+                        .post(
+                            'calculating', {
+                                "email": "$!email",
+                                "jobid": "$!jobid"
+                            },
+                            function(json) {
+                                //alert(json);
+                                //$("#status").html($!json.msg);
+                                console.log("return value : " + json)
+                                if (json) {
+                                    var email = $('input.email')
+                                        .val();
+                                    if ("email" == email) {
+                                        window.location.href = "${BAST_PATH}/result/$!jobid";
+                                    } else {
+                                        window.location.href = "${BAST_PATH}/result/$!email/$!jobid";
+                                    }
+                                } else {
+                                    //alert(json.flag);
+                                }
+                            },
+                            //返回类型
+                            "json");
+                }, 10000);
+        })
+    })(jQuery)
+    </script>
+</body>
+
+</html>

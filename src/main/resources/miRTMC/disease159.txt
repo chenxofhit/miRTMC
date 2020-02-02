@@ -1,0 +1,159 @@
+AIDS
+cancer
+cardiac hypertrophy
+gastric cancer
+dermatomyositis
+Leishmania
+polymyositis
+alcoholic liver disease
+chronic nonalcoholic liver disease
+hepatocellular carcinoma
+papillary thyroid carcinoma
+Restless legs syndrome
+glioblastoma
+meningioma
+fragile X syndrome
+dilated cardiomyopathy
+HCV
+spinocerebellar ataxia type 8
+brain ischemia
+deleterious effects in the somatic thymus tissue
+infection of chicken embryo lethal orphan adenovirus
+pain
+Alzheimer disease
+osteosarcoma
+breast cancer
+aging
+cervix cancer
+lung cancer
+oesophagus cancer
+ovarian cancer
+parotid cancer
+tongue cancer
+obesity
+testicular cancer
+blepharophimosis syndrome
+West Syndrome
+Angelman syndrome
+Prader-Willi syndrome
+prostate cancer
+endometrial cancer
+abdominal aortic aneurysm
+acute lymphoblastic leukemia
+aortic aneurysm
+atherosclerosis
+basal cell carcinoma
+cardiovascular disease
+coronary artery disease
+coronary disease
+coronary heart disease
+diabetes
+endometriosis
+familial and sporadic intracranial aneurysms
+glaucoma
+glioma
+intracranial aneurysm
+melanoma
+myocardial infarction
+nasopharyngeal carcinoma
+neural system tumors syndrome
+Neurofibromatosis type 1
+periodontitis
+peripheral artery disease
+stroke
+type 2 diabetes
+cat eye syndrome
+adolescent idiopathic scoliosis
+bipolar disorder
+panic disorder
+schizophrenia
+Pancreatic ductal adenocarcinoma
+DiGeorge syndrome
+velocardiofacial syndrome
+affective disorders
+autistic spectrum disorder
+depression
+schizoaffective disorder
+chronic lymphocytic leukemia
+lymphocytic leukemia
+lymphoma
+myeloma
+Split Hand/Split Foot malformation disorder
+myotonic dystrophy type 1
+embryonal carcinoma
+intracranial germinoma
+autoimmune disease
+pseudohypoparathyroidism type Ib
+adrenocortical carcinomas
+Beckwith-Wiedemann syndrome
+biparental complete hydatidiform moles
+bladder cancer
+cervical cancer
+chronic myeloproliferative disorders
+colon cancer
+Congenital hyperinsulinism
+germ cell tumor
+gestational choriocarcinoma
+gestational trophoblastic diseases
+growth restriction
+hematopoiesis
+hyperhomocysteinemia
+infertility
+liver cancer
+medulloblastomas
+melasma
+Mullerian aplasia
+myeloproliferative polycythaemia vera
+neural tube defects
+pheochromocytoma
+pre-eclampsia
+Silver-Russell syndrome
+trophoblastic tumor
+Wilms' tumor
+Huntington's disease
+kidney cancer
+renal cancer
+liver injury
+multiple sclerosis
+psoriasis
+colorectal cancer
+gastrointestinal stromal tumor
+hepatic colorectal metastasis
+transient neonatal diabetes mellitus
+type 1 diabetes
+narcolepsy
+Endometrial stromal sarcoma
+lung adenocarcinoma
+neuroblastoma
+non-small cell lung cancer
+acute myeloid leukemia
+chronic myeloid leukemia
+heroin addiction
+myelodysplastic syndrome
+nonfunctioning pituitary adenomas
+pituitary adenomas
+drug abuse
+heroin abuse
+myopia
+syndromic developmental defect
+frontotemporal lobar degeneration
+Down's syndrome
+Parkinson's disease
+Psoriasis vulgaris
+Burkitt's lymphomas
+cleft lip
+diabetic nephropathy
+Hodgkin's lymphoma
+murine plasmacytomas
+pancreatic cancer
+renal disease
+rhabdomyosarcoma
+Spinocerebellar ataxia type 7
+cardiomyopathy
+leukemia
+dyskeratosis congenita
+pancreaticobiliary maljunction
+squamous carcinoma
+Klinefelter's syndrome
+autoimmune thyroid disease
+ductal carcinoma

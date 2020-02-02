@@ -1,0 +1,9 @@
+gene similarity	sim_g.mat
+miRNA similarity	sim_m.mat
+miRNA gene interaction	tmMat.mat
+alpha	10/10000
+lambda	5
+gama	1.618
+tol	0.0001
+maxiter	200
+maxiter_fk	20

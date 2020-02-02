@@ -1,0 +1,147 @@
+#parse("/WEB-INF/views/container/header.html")
+
+<body>
+    <div class="container">
+        #parse("/WEB-INF/views/container/omenu.html")
+        <h2>
+            <strong class="text-uppercase"><span
+                class="glyphicon glyphicon-info-sign"> </span>Result</strong>
+        </h2>
+        <div class="clearfix"></div>
+        <hr class="row  G-MarginTop20 ">
+        <p class="text-default alert alert-info G-MarginTop20 ldap-brief">Here is the information for your submit</p>
+        <p class="">
+            <span class="glyphicon glyphicon-download"> </span>All result: #if($parameter.email != "")
+            <a class="btn btn-info" target="__blank" href="${BAST_PATH}/download/$!parameter.email/$!parameter.jobid"> download</a> #else <a class="btn btn-info" target="__blank" href="${BAST_PATH}/download/$!parameter.jobid"> download</a> #end
+        </p>
+        <div class="text-default G-MarginTop20 row">
+            <div class="col-md-3">
+                <span class="glyphicon  glyphicon-info-sign"></span>JobID: $!parameter.jobid
+            </div>
+            <div class="col-md-4">
+                #if($parameter.email != "")
+                <span class="glyphicon  glyphicon-envelope"></span>Email: $!parameter.email #else
+                <form class="form-inline" method="post" id="sendemail-form" action="${BAST_PATH}/result/toemail">
+                    <span class="glyphicon  glyphicon-envelope"></span>Email: <span class="text-info"> <input type="text"
+                        class="text-default form-group" id="email-input" name="email"
+                        data-bv-notempty data-bv-notempty-message="please input the email"
+                        data-bv-emailAddress
+                        data-bv-emailAddress-message="please input the right email">
+                        <input type="hidden" name="jobid" value="$!parameter.jobid">
+                        <button type="submit" class="btn btn-info btn-small"
+                            id="send-to-email">Send</button>
+                    </span>
+                </form>
+                #end
+            </div>
+            <div class="col-md-4">
+                #if($!errorInfo)
+                <span class="text-warning" aria-label="Close" role="alert"><span class="glyphicon glyphicon-remove"></span>$!errorInfo</span> #end #if($!successInfo)
+                <span class="text-success " aria-label="Close" role="alert"><span class="glyphicon glyphicon-ok"></span>$!successInfo</span> #end
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <hr class="row  G-MarginTop20 ">
+        <!-- 结果 -->
+        <div class="G-MarginTop20">
+            <!-- 标题 -->
+            <div class="text-default alert alert-info">Here is the result calculated by LADP for the sequence
+                <select class="selectpicker show-tick">
+                    #foreach($seq in $parameter.seqs) #set($index = ${velocityCount})
+                    <option value='$!index'>$!seq</option>
+                    #end
+                </select>
+            </div>
+            #if($parameter.seqs)
+            <table class="table table-hover text-left" data-pagination="true" data-show-columns="true" data-search="true" data-striped="true" data-toggle="table" data-show-export="true" id="dtable">
+                <thead>
+                    <tr>
+                        <th class="col-xs-8" data-field="disease" data-sortable="true">Disease Name</th>
+                        <th class="col-xs-2" data-field="score" data-sortable="true">Score</th>
+                        <th class="col-xs-2" data-field="rank" data-sortable="true">Rank</th>
+                    </tr>
+                </thead>
+            </table>
+            #else
+            <p class="text-default alert alert-danger">sorry, there is no result for the sequence</p>
+            #end
+            <!-- end if -->
+            <div class="clearfix"></div>
+            <hr class="row  G-MarginTop20 ">
+        </div>
+        #include("/WEB-INF/views/container/footer.html")
+    </div>
+    <script type="text/javascript">
+    jQuery.noConflict();
+    (function($) {
+        function init() {
+            console.log("init the table");
+            $.ajax({
+                type: "POST",
+                data: {},
+                contentType: "application/json",
+                crossDomain: true,
+                url: '${BAST_PATH}/ajaxData/$!email/$!jobid/0',
+                success: function(data) {
+                    //console.log(data);
+                    if (data.length > 0) {
+                        console.log("data---------");
+                        $('#dtable').bootstrapTable("load", {
+                            data: data
+                        });
+                    } else {
+                        console.log($!message);
+                    }
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        $(function() {
+            init();
+            //发送邮件
+            $("#send-to-email").on(
+                "click",
+                function() {
+                    $("#sendemail-form").bootstrapValidator();
+                    var isValid = $('#sendemail-form').data(
+                        'bootstrapValidator').isValid();
+                    console.log(isValid);
+                    if (isValid) {
+                        $("#sendemail-form").submit();
+                    }
+                });
+
+            $('.selectpicker').on('changed.bs.select', function(e) {
+                //下标-1
+                var select_index = $('.selectpicker').val() - 1;
+                $.ajax({
+                    type: "POST",
+                    data: {},
+                    contentType: "application/json",
+                    crossDomain: true,
+                    url: '${BAST_PATH}/ajaxData/$!email/$!jobid/' + select_index,
+                    success: function(data) {
+                        console.log("table data length = " + data.length);
+                        if (data.length > 0) {
+                            console.log("selectpicker ---- data---------");
+                            $('#dtable').bootstrapTable("load", {
+                                data: data
+                            });
+                        } else {
+                            console.log($!message);
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            });
+        })
+    })(jQuery)
+    </script>
+</body>
+
+</html>
