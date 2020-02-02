@@ -21,11 +21,10 @@ The flowchat of miRTMC is illustrated below:
 - Spring
 - Matlab
 - Shell
-- [git](http://kayzhao.github.io/ldap/)
 
 ### contact
 
-- Hui Jiang : huijiang@csu.edu.cn
+- Hui Jiang :jianghui@csu.edu.cn
 - Xiang Chen:chenxofhit@gmail.com
 - Jianxin Wang: jxwang@mail.csu.edu.cn
 - Min Li: limin@mail.csu.edu.cn
