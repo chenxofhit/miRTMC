@@ -49,9 +49,10 @@ public class CalcParameterHelper {
 				System.out.println("fasta file path: " + tempFile.getAbsolutePath());
 
 				BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
-				while (null != p.getSequence()) {
+//				while (null != p.getSequence()) {
 					bw.write(p.getSequence());
-				}
+//				}
+				bw.flush();
 				bw.close();
 
 			} catch (Exception e) {
