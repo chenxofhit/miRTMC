@@ -43,9 +43,9 @@ public class CalcParameterHelper {
 		if (null != p.getSequence() && !p.getSequence().isEmpty()) {
 			try {
 				File tempFile = new File(fileFastaName);
-				if (!tempFile.exists()) {
-					tempFile.mkdirs();
-				}
+//				if (!tempFile.exists()) {
+//					tempFile.mkdirs();
+//				}
 				System.out.println("fasta file path: " + tempFile.getAbsolutePath());
 
 				BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
