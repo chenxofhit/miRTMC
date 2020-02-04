@@ -63,7 +63,6 @@ public class KernelWorkflow {
 		String args4;
 
 		try {
-			
 			scriptFile = shellResource.getFile().getPath();
 			args0 = resource.getFile().getPath();
 
@@ -146,8 +145,7 @@ public class KernelWorkflow {
 					SendMail sMail = new SendMail("miRTMC results for jobID " + parameter.getJobid());
 					
 					// 不带附件
-					sMail.sendEmail(parameter.getEmail(), Conf.MailContent(parameter.getEmail(),
-							 parameter.getJobid()));
+					sMail.sendEmail(parameter.getEmail(), Conf.MailContent(parameter.getJobid()));
 					
 				}catch(Exception e) {
 					e.printStackTrace();
@@ -183,8 +181,7 @@ public class KernelWorkflow {
 					SendMail sMail = new SendMail("miRTMC results for jobID " + parameter.getJobid());
 					
 					// 不带附件
-					sMail.sendEmail(parameter.getEmail(), Conf.MailContent(parameter.getEmail(),
-							 parameter.getJobid()));
+					sMail.sendEmail(parameter.getEmail(), Conf.MailContent(parameter.getJobid()));
 					
 				}catch(Exception e) {
 					e.printStackTrace();

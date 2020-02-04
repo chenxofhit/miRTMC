@@ -169,6 +169,7 @@ public class Controllers {
 				parameter.setResultPath(resultPath);
 
 				parameter.setSequence(sequence);
+				
 				parameter.setEmail(email);
 				
 			    MyThread dojob= new DoJobOfflineThread(parameter, "Thread-"+jobid);
@@ -532,12 +533,18 @@ public class Controllers {
 	@RequestMapping(method = RequestMethod.POST, value = "/checkresult")
 	public String checkResult(ModelMap model, String check_email, String check_jobid) {
 		// result path
-		String path = ResultView.conevertToPath(BASE_PATH + "userdata", check_email.trim(), check_jobid.trim());
+		String path = null;
 		if(null == check_email || check_email.isEmpty()) {
 			path = ResultView.conevertToPathWithoutEmail(BASE_PATH + "userdata", check_jobid);
+		}else {
+			 path = ResultView.conevertToPath(BASE_PATH + "userdata", check_email.trim(), check_jobid.trim());
 		}
 		
 		logger.info("check the result of output path" + path);
+		if(!new File(path).exists()) {
+			model.addAttribute("message", "Sorry , the job id does not exist. Please check the jobid and input again. ");
+			return "running";
+		}
 		
 		try {
 			// get result
@@ -546,21 +553,21 @@ public class Controllers {
 
 
 			// get parameter
-			CalcParameter ldapPara = null;
-			ldapPara = new CalcParameterHelper(path + "/parameter.txt","").getObjFromFile();
+			CalcParameter parameter = null;
+			parameter = new CalcParameterHelper(path + "/parameter.txt","").getObjFromFile();
 
 
-			model.addAttribute("parameter", ldapPara);
+			model.addAttribute("parameter", parameter);
 			model.addAttribute("knownList", knownList);
 			model.addAttribute("predictdScoreList", predictdScoreList);
 			
-			model.addAttribute("email", ldapPara.getEmail());
-			model.addAttribute("jobid", ldapPara.getJobid());
+			model.addAttribute("email", parameter.getEmail());
+			model.addAttribute("jobid", parameter.getJobid());
 			return "email-result";
 
 		} catch (IOException e) {
 			e.printStackTrace();
-			model.addAttribute("message", "Sorry , result is not exist. You must have the wrong jobid to check ");
+			model.addAttribute("message", "Sorry, the job is still in processing. You will be notified with an email once the job is finished! ");
 			return "running";
 		}
 	}
@@ -713,17 +720,17 @@ public class Controllers {
 			List<PredictedScore> predictdScoreList = ResultView.readPredictedOutputText(path);
 
 			// get parameter
-			CalcParameter ldapPara = null;
-			ldapPara = new CalcParameterHelper(path + "/parameter.txt","").getObjFromFile();
+			CalcParameter parameter = null;
+			parameter = new CalcParameterHelper(path + "/parameter.txt","").getObjFromFile();
 
 
-			model.addAttribute("parameter", ldapPara);
+			model.addAttribute("parameter", parameter);
 			// model.addAttribute("resultview", dsLists);
 			model.addAttribute("knownList", knownList);
 			model.addAttribute("predictdScoreList", predictdScoreList);
 
-			model.addAttribute("email", ldapPara.getEmail());
-			model.addAttribute("jobid", ldapPara.getJobid());
+			model.addAttribute("email", parameter.getEmail());
+			model.addAttribute("jobid", parameter.getJobid());
 			return "online-result2";
 
 		} catch (IOException e) {

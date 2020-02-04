@@ -36,17 +36,16 @@ public class Conf {
 
 	public static String MIRTMC_STATUS = "Init";
 
-	public static String MailContent(String email, String jobid) {
+	public static String MailContent(String jobid) {
 
 		StringBuffer link = new StringBuffer(
 				"http://bioinformatics.csu.edu.cn/miRTMC/");
-		link.append("result/" + email + "/" + jobid);
+		link.append("result/" + jobid);
 
 		String mailContent = "<html><body><p>Dear User,<br>"
 				+ "<p>Your job with job id "
 				+ jobid
 				+ " has been finished on the miRTMC server.  <br>"
-				+ "The predicted result is attached with this mail.(The first column is predicted diseases. The second column is corresponding score)<br>"
 				+ "The complete results  are available at:<br>" + link
 				+ "<p> The results are kept on the server for 3 months. "
 				+ "<p>Thanks for using the miRTMC server.<br>"

@@ -19,7 +19,7 @@ public class ThreadPoolUtils {
  
 	/**
 	 * 
-	 * 考虑到机器配置，这里按照 Dr. Jiang 的建议，将线程池的大小设置为固定一个线程在池中
+	 * 考虑到机器配置，这里按照 Dr.Jiang 的建议，将线程池的大小设置为固定一个线程在池中
 	 * 
 	 */
 	private static final ExecutorService threadPool = Executors.newFixedThreadPool(1);

@@ -6,8 +6,9 @@ import com.csu.webapp.dto.CalcParameter;
 import com.csu.webapp.po.MyThread;
 
 /**
- * 线程，外部参数传递进来，为调用miRTMC计算流程 该线程在某些计算参数下会比较耗时，因此建议不能直接 start， 请配合线程池调用
- * 
+ * 线程，外部参数传递进来，为调用miRTMC计算流程
+ * 该线程在某些计算参数下会比较耗时，
+ * 因此建议不能直接 start， 请配合线程池调用
  * 
  * @author chenx
  * @since 2020-01-26 18:39:20 【天佑武汉】

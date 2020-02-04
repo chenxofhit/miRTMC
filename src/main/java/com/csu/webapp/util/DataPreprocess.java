@@ -43,12 +43,15 @@ import com.csu.webapp.controller.Controllers;
  * Fasta预处理
  * 
  * @author kayzhao
+ * @author chenx
+ * 
  *
  */
 public class DataPreprocess {
 
-	private static final Logger logger = Logger.getLogger(Controllers.class);
+	private static final Logger logger = Logger.getLogger(DataPreprocess.class);
 
+	
 	/**
 	 * 检验上传文件是否为Fasta格式
 	 * 
