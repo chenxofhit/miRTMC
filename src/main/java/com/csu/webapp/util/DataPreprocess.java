@@ -37,8 +37,6 @@ import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
-import com.csu.webapp.controller.Controllers;
-
 /**
  * Fasta预处理
  * 

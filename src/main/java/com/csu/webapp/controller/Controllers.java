@@ -168,8 +168,20 @@ public class Controllers {
 				}
 				parameter.setResultPath(resultPath);
 
-				parameter.setSequence(sequence);
+				logger.info("Origin sequence: " + sequence);
 				
+				String newSequence = sequence;
+				String[] lines = sequence.split(System.lineSeparator());
+
+				if(lines.length > 2 || lines.length == 0) {
+					logger.warn("Sequence split error ! ");
+				}
+				else{
+					newSequence = lines[0] + System.lineSeparator() + lines[1].substring(1,6);
+					logger.info("Splitted sequence: " + newSequence);
+				}
+
+				parameter.setSequence(newSequence);
 				parameter.setEmail(email);
 				
 			    MyThread dojob= new DoJobOfflineThread(parameter, "Thread-"+jobid);
