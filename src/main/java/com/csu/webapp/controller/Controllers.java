@@ -150,7 +150,7 @@ public class Controllers {
 				ExecutorService threadPool = ThreadPoolUtils.getThreadPool();
 				threadPool.submit(dojob);
 
-				String msg = "<p>Thank you for using miRTMC webserver. Please wait for about 1 minute while your job is in process.<br>"
+				String msg = "<p>Thank you for using miRTMC webserver. Please wait for about 1 minute while your job is in process.<br><br>"
 						+ "Note: <br>" + "<p>JobID：" + jobid
 						+ "<p>Do not close this page until the job finished, otherwise you cannot check the result. ";
 				model.addAttribute("message", msg);
@@ -235,7 +235,7 @@ public class Controllers {
 		    ExecutorService threadPool = ThreadPoolUtils.getThreadPool();
 			threadPool.submit(dojob);
 
-			String msg = "<p>Thank you for using miRTMC webserver. Please wait for about 1 minute while your job is in process.<br>" + "Note: <br>" + "<p>JobID：" + jobid
+			String msg = "<p>Thank you for using miRTMC webserver. Please wait for about 1 minute while your job is in process.<br><br>" + "Note: <br>" + "<p>JobID：" + jobid
 					+ "<p>Do not close this page until the job finished, otherwise you cannot check the result. ";
 			
 			model.addAttribute("message", msg);
@@ -265,7 +265,7 @@ public class Controllers {
 			    ExecutorService threadPool = ThreadPoolUtils.getThreadPool();
 				threadPool.submit(dojob);
 
-				String msg = "<p>Thank you for using miRTMC webserver. Please wait minutes while your job will be processed in a queue.<br>" + "Note: <br>" + "<p>JobID：" + jobid
+				String msg = "<p>Thank you for using miRTMC webserver. Please wait minutes while your job will be processed in a queue.<br><br>" + "Note: <br>" + "<p>JobID：" + jobid
 						+ "<p>You will be notified with an email when the job is finished.";
 				
 				model.addAttribute("message", msg);

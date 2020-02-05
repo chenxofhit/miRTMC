@@ -107,7 +107,7 @@ public class MiRNADao {
 	 */
 	public static void main(String[] args) throws IOException {
 		MiRNADao miRNADao = MiRNADao.getInstance();
-		MiRNA miRNA = miRNADao.getMiRNAMapByName().get("hsa-miR-548d-5p");
+		MiRNA miRNA = miRNADao.getMiRNAMapByName().get("hsa-miR-128-3p");
 		System.out.println(miRNA);
 	}
 }

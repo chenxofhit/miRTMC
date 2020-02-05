@@ -209,9 +209,12 @@
 										alert_info("Please input a sequence or a file...");
 										return false;
 									} else { */
+										var counter = 0;
+									
 										if ($("#email_div").css("display") == "block") {
 											if (emailAddress.test(email)) {
-												$("#mirtmc-calculate").submit();
+												//$("#mirtmc-calculate").submit();
+												counter ++;
 												// return true;
 											} else {
 												alert_info("The email is not valid");
@@ -219,7 +222,8 @@
 												$("#email_div").focus();
 												return false;
 											}
-										} else if (sequence.length >= 200) {
+										} 
+										if (sequence.length >= 200) {
 											var sequence_pattern = new RegExp(
 													"^[agctAGCT]*$");
 											var arr = sequence
@@ -233,8 +237,8 @@
 												if (sequence_pattern
 														.test(LncSeq)) {
 													// return false;
-													$("#mirtmc-calculate")
-															.submit();
+													counter ++;
+													
 												} else {
 													alert_info("The sequence has invalid characters");
 													return false;
@@ -247,6 +251,11 @@
 											alert_info("The sequence or the file is not valid");
 											//alert("The sequence or the email is not valid");
 											return false;
+										}
+										
+										if(counter >= 2){
+											$("#mirtmc-calculate")
+											.submit();	
 										}
 /* 									} */
 								});
