@@ -3,8 +3,10 @@ package com.csu.webapp.controller;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
@@ -544,7 +546,8 @@ public class Controllers {
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/checkresult")
 	public String checkResult(ModelMap model, String check_email, String check_jobid) {
-		// result path
+		
+		// result path which store the temporary results
 		String path = null;
 		if(null == check_email || check_email.isEmpty()) {
 			path = ResultView.conevertToPathWithoutEmail(BASE_PATH + "userdata", check_jobid);
@@ -554,15 +557,25 @@ public class Controllers {
 		
 		logger.info("check the result of output path" + path);
 		if(!new File(path).exists()) {
-			model.addAttribute("message", "Sorry , the job id does not exist. Please check the jobid and input again. ");
+			model.addAttribute("message", "Sorry, the job id does not exist. Please check the job id and input again. ");
 			return "running";
 		}
 		
 		try {
+			List<PredictedScore> knownList = new ArrayList<PredictedScore>();
+			
 			// get result
-			List<PredictedScore> knownList = ResultView.readKnownOutputText(path);
+			try {
+				knownList = ResultView.readKnownOutputText(path);
+			}catch(Exception e) {
+				if (e instanceof FileNotFoundException) {
+					logger.warn("known.txt not found in this case, maybe in the fasta input model.");
+				}else {
+					logger.error("read known txt  error" + e.getMessage(), e);
+				}
+			}
+			
 			List<PredictedScore> predictdScoreList = ResultView.readPredictedOutputText(path);
-
 
 			// get parameter
 			CalcParameter parameter = null;
@@ -575,11 +588,11 @@ public class Controllers {
 			
 			model.addAttribute("email", parameter.getEmail());
 			model.addAttribute("jobid", parameter.getJobid());
-			return "email-result";
+			return "online-result2";
 
 		} catch (IOException e) {
 			e.printStackTrace();
-			model.addAttribute("message", "Sorry, the job is still in processing. You will be notified with an email once the job is finished! ");
+			model.addAttribute("message", "Sorry, the job is still running. You will be notified with an email once the job is finished! ");
 			return "running";
 		}
 	}

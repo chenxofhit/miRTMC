@@ -15,9 +15,9 @@
 
 			<!-- 标题 -->
 			<div class="">
-				<p class="text-default alert alert-info">Here is the known
-					miRNA targets in miRTarBase V7.0</p>
 				#if(${knownList.size()}>0)
+				<p class="text-default alert alert-info">Here is the known miRNA
+					targets in miRTarBase V7.0</p>
 				<table class="table table-hover text-left" data-toggle="table"
 					data-sortable="true" data-pagination="true"
 					data-show-columns="true" data-striped="true" data-search="true"
@@ -28,14 +28,13 @@
 							<th class="col-xs-2" data-sortable="true">Number</th>
 							<th class="col-xs-2" data-sortable="true">miRNA name</th>
 							<th class="col-xs-8" data-sortable="true">Gene Id</th>
-							<th class="col-xs-2" data-sortable="true">Gene symbol</th> 
-							#else
+							<th class="col-xs-2" data-sortable="true">Gene symbol</th> #else
 							<th class="col-xs-2" data-sortable="true">Number</th>
-							<!--<th class="col-xs-8" data-sortable="true">MiRNA Id</th>-->							
+							<!--<th class="col-xs-8" data-sortable="true">MiRNA Id</th>-->
 							<th class="col-xs-2" data-sortable="true">MiRNA name</th>
 							<th class="col-xs-8" data-sortable="true">Gene Id</th>
-							<th class="col-xs-2" data-sortable="true">Gene symbol(Refseq_ID)</th> 
-							 #end
+							<th class="col-xs-2" data-sortable="true">Gene
+								symbol(Refseq_ID)</th> #end
 
 						</tr>
 					</thead>
@@ -48,11 +47,10 @@
 							<td class="col-xs-2">$!d_s.rank</td>
 							<td class="col-xs-2">$!d_s.miRNAName</td>
 							<td class="col-xs-2">$!d_s.geneId</td>
-							<td class="col-xs-2">$!d_s.geneName</td>
-							 #else
+							<td class="col-xs-2">$!d_s.geneName</td> #else
 							<td class="col-xs-2">$!d_s.rank</td>
 							<!--<td class="col-xs-8">$!d_s.miRNAId</td>  -->
-							<td class="col-xs-2">$!d_s.miRNAName</td> 
+							<td class="col-xs-2">$!d_s.miRNAName</td>
 							<td class="col-xs-8">$!d_s.geneId</td>
 							<td class="col-xs-2">$!d_s.geneName</td>#end
 						</tr>
@@ -84,14 +82,14 @@
 							<th class="col-xs-2" data-sortable="true">MiRNA name</th>
 							<th class="col-xs-8" data-sortable="true">Gene Id</th>
 							<th class="col-xs-2" data-sortable="true">Gene name</th>
-							<th class="col-xs-2" data-sortable="true">Score</th> 
-							#else
+							<th class="col-xs-2" data-sortable="true">Score</th> #else
 
 							<th class="col-xs-2" data-sortable="true">Rank</th>
 							<th class="col-xs-2" data-sortable="true">MiRNA name</th>
 							<th class="col-xs-8" data-sortable="true">Gene Id</th>
-							<th class="col-xs-2" data-sortable="true">Gene symbol(Refseq_ID)</th>
-							<!--<th class="col-xs-8" data-sortable="true">MiRNA Id</th> -->	
+							<th class="col-xs-2" data-sortable="true">Gene
+								symbol(Refseq_ID)</th>
+							<!--<th class="col-xs-8" data-sortable="true">MiRNA Id</th> -->
 							<th class="col-xs-2" data-sortable="true">Score</th> #end
 						</tr>
 					</thead>
@@ -105,15 +103,13 @@
 							<td class="col-xs-2">$!d_s.miRNAName</td>
 							<td class="col-xs-8">$!d_s.geneId</td>
 							<td class="col-xs-2">$!d_s.geneName</td>
-							<td class="col-xs-2">$!d_s.score</td> 
-							#else 
+							<td class="col-xs-2">$!d_s.score</td> #else
 							<td class="col-xs-2">$!d_s.rank</td>
 							<td class="col-xs-2">$!d_s.miRNAName</td>
 							<td class="col-xs-8">$!d_s.geneId</td>
 							<td class="col-xs-2">$!d_s.geneName</td>
-							<!-- <td class="col-xs-8">$!d_s.miRNAId</td> -->		
-							<td class="col-xs-2">$!d_s.score</td> 
-							#end
+							<!-- <td class="col-xs-8">$!d_s.miRNAId</td> -->
+							<td class="col-xs-2">$!d_s.score</td> #end
 						</tr>
 						<!-- end foreach -->
 						#end
