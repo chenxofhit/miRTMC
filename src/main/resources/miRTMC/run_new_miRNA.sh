@@ -7,7 +7,7 @@ export PATH=$PATH:/Applications/MATLAB_R2016b.app/bin/
 #change directory
 cd $1
 
-./run_needle.sh test.fa miRNA3.fa tmp_list
+./run_needle.sh fasta.txt miRNA3.fa tmp_list
 rm -r _tmp_splits
 rm ___n___
 

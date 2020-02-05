@@ -177,7 +177,7 @@ public class Controllers {
 					logger.warn("Sequence split error ! ");
 				}
 				else{
-					newSequence = lines[0] + System.lineSeparator() + lines[1].substring(1,6);
+					newSequence = lines[0] + System.lineSeparator() + lines[1].substring(1,7);
 					logger.info("Splitted sequence: " + newSequence);
 				}
 
