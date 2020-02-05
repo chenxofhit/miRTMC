@@ -7,10 +7,10 @@
 #You can comment on below line of export, if you find the Matlab has been configurated successfully!
 
 #For Linux,
-#export PATH=$PATH:/usr/local/MATLAB/R2018b/bin/
+export PATH=$PATH:/usr/local/MATLAB/R2018b/bin/
 
 #For Mac,
-export PATH=$PATH:/Applications/MATLAB_R2016b.app/bin/
+#export PATH=$PATH:/Applications/MATLAB_R2016b.app/bin/
 
 cd $1
 matlab -nosplash -nodisplay -nodesktop -nojvm -logfile $7'/matlab.out'  -r "get_top_N('$2',$3,'$4','$5',$6,'$7')"

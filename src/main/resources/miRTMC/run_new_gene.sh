@@ -1,8 +1,8 @@
 #For Linux,
-#export PATH=$PATH:/usr/local/MATLAB/R2018b/bin/
+export PATH=$PATH:/usr/local/MATLAB/R2018b/bin/
 
 #For Mac,
-export PATH=$PATH:/Applications/MATLAB_R2016b.app/bin/
+#export PATH=$PATH:/Applications/MATLAB_R2016b.app/bin/
 
 #change directory
 cd $1
