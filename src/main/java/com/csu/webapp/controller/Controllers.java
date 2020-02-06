@@ -248,6 +248,7 @@ public class Controllers {
 				//The gene is not in our provided file, offline calculating
 				
 				parameter.setType(option.intValue());
+				parameter.setContent(content);
 				parameter.setJobid(jobid);
 				String resultPath = BASE_PATH + "userdata/" + parameter.getJobid();
 				

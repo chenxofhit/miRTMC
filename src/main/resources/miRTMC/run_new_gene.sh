@@ -7,7 +7,13 @@ export PATH=$PATH:/usr/local/MATLAB/R2018b/bin/
 #change directory
 cd $1
 
-./run_water.sh test_utr.fa mtis7_utr.fasta utr_tmp_list
+cp ./run_water.sh $2
+cp ./mtis7_utr.fasta $2
+cp ./mtis7_utr_withid.txt $2
+
+cd $2
+
+./run_water.sh fasta.txt mtis7_utr.fasta utr_tmp_list
 rm -r _tmp_splits
 rm ___n___
 
@@ -18,6 +24,12 @@ sort -k2,2n -k1,1nr tmp0s | sort -k2,2n -u > tmp0
 awk '{print $1}' tmp0 > vec
 
 #matlab -nosplash -nodisplay -nodesktop -nojvm -logfile $1'/matlab.out'  -r "new_gene('$1')"
+cd $1
 matlab -nosplash -nodisplay -nodesktop -nojvm -logfile $1'/matlab.out'  -r "new_gene('$2')"
 
+cd $2
 rm tmp_list
+rm ./run_water.sh
+rm ./mtis7_utr.fasta
+rm ./mtis7_utr_withid.txt
+

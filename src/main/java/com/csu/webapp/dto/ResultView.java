@@ -100,7 +100,10 @@ public class ResultView {
 				if(type == SearchBy.miRNA_name.getCode()) {
 					
 					//Gene gene = GeneDao.getGeneMapById().get(Integer.valueOf(line));
-					Gene gene = GeneDao.getGeneMapByGsId().get(Integer.valueOf(line));
+					System.out.println(line);
+					System.out.println(null == GeneDao.getGeneMapByGsId());
+					Gene gene = GeneDao.getInstance().getGeneMapByGsId().get(Integer.valueOf(line));
+					
 					if(null == gene) {
 						logger.warn("gene id " + line  +  " does not exsit in the reference list");
 						continue;
@@ -121,23 +124,42 @@ public class ResultView {
 						continue;
 					}
 					if(type == SearchBy.gene_utraname.getCode()) {
-						Gene gene_id = GeneDao.getGeneMapByUltraName1().get(getContent(path));
-						ds.setGeneId(gene_id.getGene_id());
-						ds.setGeneName(getContent(path));
+						Gene gene = GeneDao.getInstance().getGeneMapByUltraName1().get(getContent(path));
+						if(null == gene) {
+							logger.warn("gene null, maybe in the fasta mode");
+						}
+						else {
+							ds.setGeneId(gene.getGene_id());
+							ds.setGeneName(getContent(path));
+						}
+						
 						ds.setMiRNAId(miRNA.getMiRNA_id());
 						ds.setMiRNAName(miRNA.getMiRNA_name());
 					}
 					if(type == SearchBy.gene_symbol.getCode()) {
-						Gene gene_id = GeneDao.getGeneMapByGeneSymbol().get(getContent(path));
-						ds.setGeneId(gene_id.getGene_id());
-						ds.setGeneName(getContent(path));
+						Gene gene = GeneDao.getInstance().getGeneMapByGeneSymbol().get(getContent(path));
+
+						if(null == gene) {
+							logger.warn("gene null, maybe in the fasta mode");
+						}
+						else {
+							ds.setGeneId(gene.getGene_id());
+							ds.setGeneName(getContent(path));
+						}
+						
 						ds.setMiRNAId(miRNA.getMiRNA_id());
 						ds.setMiRNAName(miRNA.getMiRNA_name());
 					}
 					if(type ==  SearchBy.gene_gs_id.getCode()) {
-						Gene gene_id = GeneDao.getGeneMapById().get(Integer.valueOf(getContent(path)));
-						ds.setGeneId(Integer.valueOf(getContent(path)));
-						ds.setGeneName(gene_id.getGene_symbol());
+						Gene gene = GeneDao.getInstance().getGeneMapById().get(Integer.valueOf(getContent(path)));
+					
+						if(null == gene) {
+							logger.warn("gene null, maybe in the fasta mode");
+						}
+						else {
+							ds.setGeneId(gene.getGene_id());
+							ds.setGeneName(getContent(path));
+						}	
 						ds.setMiRNAId(miRNA.getMiRNA_id());
 						ds.setMiRNAName(miRNA.getMiRNA_name());
 					}
@@ -196,21 +218,21 @@ public class ResultView {
 						continue;
 					}
 					if(type == SearchBy.gene_utraname.getCode()) {
-					Gene gene_id = GeneDao.getGeneMapByUltraName1().get(getContent(path));
+					Gene gene_id = GeneDao.getInstance().getGeneMapByUltraName1().get(getContent(path));
 					predictedScore.setGeneId(gene_id.getGene_id());
 					predictedScore.setGeneName(getContent(path));
 					predictedScore.setMiRNAId(miRNA.getMiRNA_id());
 					predictedScore.setMiRNAName(miRNA.getMiRNA_name());
 				}
 					if(type == SearchBy.gene_symbol.getCode()) {
-						Gene gene_id = GeneDao.getGeneMapByGeneSymbol().get(getContent(path));
+						Gene gene_id = GeneDao.getInstance().getGeneMapByGeneSymbol().get(getContent(path));
 						predictedScore.setGeneId(gene_id.getGene_id());
 						predictedScore.setGeneName(getContent(path));
 						predictedScore.setMiRNAId(miRNA.getMiRNA_id());
 						predictedScore.setMiRNAName(miRNA.getMiRNA_name());
 					}
 					if(type ==  SearchBy.gene_gs_id.getCode()) {
-						Gene gene_id = GeneDao.getGeneMapById().get(Integer.valueOf(getContent(path)));
+						Gene gene_id = GeneDao.getInstance().getGeneMapById().get(Integer.valueOf(getContent(path)));
 						predictedScore.setGeneId(Integer.valueOf(getContent(path)));
 						predictedScore.setGeneName(gene_id.getGene_symbol());
 						predictedScore.setMiRNAId(miRNA.getMiRNA_id());

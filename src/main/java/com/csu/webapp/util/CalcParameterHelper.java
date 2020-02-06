@@ -51,6 +51,7 @@ public class CalcParameterHelper {
 				BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
 //				while (null != p.getSequence()) {
 					bw.write(p.getSequence());
+					bw.write("\n");
 //				}
 				bw.flush();
 				bw.close();

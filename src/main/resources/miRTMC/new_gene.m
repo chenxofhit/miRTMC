@@ -1,5 +1,5 @@
 function [] = new_gene(resultpath)
-vec = importdata('vec');
+vec = importdata([resultpath '/vec']);
 vec = vec./100;
 
 sim_m = importdata('sim_m.mat');
