@@ -742,6 +742,17 @@ public class Controllers {
 		try {
 			// get result
 			List<PredictedScore> knownList = ResultView.readKnownOutputText(path);
+			
+			try {
+				knownList = ResultView.readKnownOutputText(path);
+			}catch(Exception e) {
+				if (e instanceof FileNotFoundException) {
+					logger.warn("known.txt not found in this case, maybe in the fasta input model.");
+				}else {
+					logger.error("read known txt  error" + e.getMessage(), e);
+				}
+			}
+			
 			List<PredictedScore> predictdScoreList = ResultView.readPredictedOutputText(path);
 
 			// get parameter
