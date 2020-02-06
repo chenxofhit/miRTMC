@@ -741,7 +741,7 @@ public class Controllers {
 
 		try {
 			// get result
-			List<PredictedScore> knownList = ResultView.readKnownOutputText(path);
+			List<PredictedScore> knownList = new ArrayList<PredictedScore>();
 			
 			try {
 				knownList = ResultView.readKnownOutputText(path);
