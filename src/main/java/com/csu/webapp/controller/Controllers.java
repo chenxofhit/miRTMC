@@ -39,6 +39,7 @@ import com.csu.webapp.util.CalcParameterHelper;
 import com.csu.webapp.util.DataPreprocess;
 import com.csu.webapp.util.DoJobOfflineThread;
 import com.csu.webapp.util.DoJobThread;
+import com.csu.webapp.util.SequenceExtractor;
 import com.csu.webapp.util.ThreadPoolUtils;
 
 /**
@@ -170,20 +171,9 @@ public class Controllers {
 				}
 				parameter.setResultPath(resultPath);
 
-				logger.info("Origin sequence: " + sequence);
+				parameter.setContent(SequenceExtractor.getWrappedSequenceContent(sequence));
+				parameter.setSequence(SequenceExtractor.getWrappedSequence(sequence));
 				
-				String newSequence = sequence;
-				String[] lines = sequence.split(System.lineSeparator());
-
-				if(lines.length > 2 || lines.length == 0) {
-					logger.warn("Sequence split error ! ");
-				}
-				else{
-					newSequence = lines[0] + System.lineSeparator() + lines[1].substring(1,7);
-					logger.info("Splitted sequence: " + newSequence);
-				}
-
-				parameter.setSequence(newSequence);
 				parameter.setEmail(email);
 				
 			    MyThread dojob= new DoJobOfflineThread(parameter, "Thread-"+jobid);
@@ -248,7 +238,7 @@ public class Controllers {
 				//The gene is not in our provided file, offline calculating
 				
 				parameter.setType(option.intValue());
-				parameter.setContent(content);
+				
 				parameter.setJobid(jobid);
 				String resultPath = BASE_PATH + "userdata/" + parameter.getJobid();
 				
@@ -258,7 +248,10 @@ public class Controllers {
 					userFileDir.mkdirs();
 				}
 				parameter.setResultPath(resultPath);	
-				parameter.setSequence(sequence);
+				
+				parameter.setContent(SequenceExtractor.getWrappedSequenceContent(sequence));
+				parameter.setSequence(SequenceExtractor.getWrappedSequence(sequence));
+				
 				parameter.setEmail(email);
 				
 			    MyThread dojob= new DoJobOfflineThread(parameter, "Thread-"+jobid);
