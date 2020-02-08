@@ -19,15 +19,15 @@ import com.csu.webapp.type.SearchBy;
 import com.csu.webapp.util.CalcParameterHelper;
 
 /**
- * 视图查看
+ * 视图层
  * 
  * @author kayzhao
- * @author chenx 
+ * @author chenx
  * 
  *
  */
 public class ResultView {
-	
+
 	private final static Logger logger = Logger.getLogger(ResultView.class);
 
 	private CalcParameter parameter;
@@ -40,17 +40,14 @@ public class ResultView {
 		return parameter;
 	}
 
-	public static String conevertToPath(String basepath, String email,
-			String jobid) {
-		return new String(basepath + Conf.FILE_SEPARATOR + email
-				+ Conf.FILE_SEPARATOR + jobid);
+	public static String conevertToPath(String basepath, String email, String jobid) {
+		return new String(basepath + Conf.FILE_SEPARATOR + email + Conf.FILE_SEPARATOR + jobid);
 	}
 
-	public static String conevertToPathWithoutEmail(String basepath,
-			String jobid) {
+	public static String conevertToPathWithoutEmail(String basepath, String jobid) {
 		return new String(basepath + Conf.FILE_SEPARATOR + jobid);
 	}
-	
+
 	public static int getType(String basepath) {
 		String filename = basepath + Conf.FILE_SEPARATOR + "parameter.txt";
 		int type = SearchBy.miRNA_name.getCode();
@@ -62,22 +59,21 @@ public class ResultView {
 	public static String getContent(String basepath) {
 		String filename = basepath + Conf.FILE_SEPARATOR + "parameter.txt";
 		CalcParameter sysParameter = new CalcParameterHelper(filename, null).getObjFromFile();
-		String content  = sysParameter.getContent();
+		String content = sysParameter.getContent();
 		return content;
 	}
-	
-	public static List<PredictedScore> readPredictedOutputText(String path)
-			throws IOException {
-		
+
+	public static List<PredictedScore> readPredictedOutputText(String path) throws IOException {
+
 		int type = ResultView.getType(path);
 		String content = ResultView.getContent(path);
-		
+
 		List<PredictedScore> predictedScores = new ArrayList<PredictedScore>();
 		BufferedReader br;
 
 		String scorefile = path + "/score.txt";
 		String indexfile = path + "/ind.txt";
-		
+
 		List<Float> scores = new ArrayList<Float>();
 		File file = new File(scorefile);
 		br = new BufferedReader(new FileReader(file));
@@ -87,172 +83,160 @@ public class ResultView {
 		}
 		br.close();
 
-		
 		file = new File(indexfile);
 		br = new BufferedReader(new FileReader(file));
 		line = null;
 		int rank = 1;
-		
+
 		while ((line = br.readLine()) != null) {
-				PredictedScore ds = new PredictedScore();
-				
-				if(type == SearchBy.miRNA_name.getCode()) {
-					Gene gene = GeneDao.getInstance().getGeneMapByGsId().get(Integer.valueOf(line));
-					
-					if(null == gene) {
-						logger.warn("gene id " + line  +  " does not exsit in the reference list");
-						continue;
-					}
-					
-					ds.setGeneId(gene.getGene_id());
-					ds.setGeneName(gene.getGene_symbol());
-					ds.setMiRNAName(content);
-				}
-				
-				if(type == SearchBy.gene_gs_id.getCode() ||
-					type == SearchBy.gene_symbol.getCode()	||
-					type == SearchBy.gene_utraname.getCode()) {
-					
-					MiRNA miRNA = MiRNADao.getInstance().getMiRNAMapById().get(Integer.valueOf(line));
-					if(null == miRNA) {
-						logger.warn("miRNA id " + line  +  " does not exsit in the reference list");
-						continue;
-					}
-					if(type == SearchBy.gene_utraname.getCode()) {
-						String key = getContent(path);
-						Gene gene = GeneDao.getInstance().getGeneMapByUltraName1().get(key);
-						if(null == gene) {
-							logger.warn("gene null, maybe in the fasta mode");
-							ds.setGeneId(-1);
-							ds.setGeneName(key);
-						}
-						else {
-							ds.setGeneId(gene.getGene_id());
-							ds.setGeneName(key);
-						}
-						
-						ds.setMiRNAId(miRNA.getMiRNA_id());
-						ds.setMiRNAName(miRNA.getMiRNA_name());
-					}
-					if(type == SearchBy.gene_symbol.getCode()) {
-						String key = getContent(path);
-						Gene gene = GeneDao.getInstance().getGeneMapByGeneSymbol().get(key);
+			PredictedScore ds = new PredictedScore();
 
-						if(null == gene) {
-							logger.warn("gene null, maybe in the fasta mode");
-							ds.setGeneId(-1);
-							ds.setGeneName(key);
-						}
-						else {
-							ds.setGeneId(gene.getGene_id());
-							ds.setGeneName(key);
-						}
-						
-						ds.setMiRNAId(miRNA.getMiRNA_id());
-						ds.setMiRNAName(miRNA.getMiRNA_name());
-					}
-					if(type ==  SearchBy.gene_gs_id.getCode()) {
-						String key = getContent(path);
-						Gene gene = null;
-						
-						try {
-						  gene = GeneDao.getInstance().getGeneMapById().get(Integer.valueOf(key));
-						  ds.setGeneId(gene.getGene_id());
-						  ds.setGeneName(gene.getGene_symbol());
-						  
-						}catch(Exception e) {
-							if(e instanceof NumberFormatException) {
-								logger.warn("gene null, maybe in the fasta mode");
-							    ds.setGeneId(-1);
-							    ds.setGeneName(key);
-							}
-						}
-//			
-						
+			if (type == SearchBy.miRNA_name.getCode()) {
+				Gene gene = GeneDao.getInstance().getGeneMapByGsId().get(Integer.valueOf(line));
 
-						
-						ds.setMiRNAId(miRNA.getMiRNA_id());
-						ds.setMiRNAName(miRNA.getMiRNA_name());
-					}
+				if (null == gene) {
+					logger.warn("gene id " + line + " does not exsit in the reference list");
+					continue;
 				}
-				
-				ds.setRank(rank);
-				ds.setScore(scores.get(rank-1));
-				
-				predictedScores.add(ds);
-				rank++;
+
+				ds.setGeneId(gene.getGene_id());
+				ds.setGeneName(gene.getGene_symbol());
+				ds.setMiRNAName(content);
 			}
-		
+
+			if (type == SearchBy.gene_gs_id.getCode() || type == SearchBy.gene_symbol.getCode()
+					|| type == SearchBy.gene_utraname.getCode()) {
+
+				MiRNA miRNA = MiRNADao.getInstance().getMiRNAMapById().get(Integer.valueOf(line));
+				if (null == miRNA) {
+					logger.warn("miRNA id " + line + " does not exsit in the reference list");
+					continue;
+				}
+				if (type == SearchBy.gene_utraname.getCode()) {
+					String key = getContent(path);
+					Gene gene = GeneDao.getInstance().getGeneMapByUltraName1().get(key);
+					if (null == gene) {
+						logger.warn("gene null, maybe in the fasta mode");
+						ds.setGeneId(-1);
+						ds.setGeneName(key);
+					} else {
+						ds.setGeneId(gene.getGene_id());
+						ds.setGeneName(key);
+					}
+
+					ds.setMiRNAId(miRNA.getMiRNA_id());
+					ds.setMiRNAName(miRNA.getMiRNA_name());
+				}
+				if (type == SearchBy.gene_symbol.getCode()) {
+					String key = getContent(path);
+					Gene gene = GeneDao.getInstance().getGeneMapByGeneSymbol().get(key);
+
+					if (null == gene) {
+						logger.warn("gene null, maybe in the fasta mode");
+						ds.setGeneId(-1);
+						ds.setGeneName(key);
+					} else {
+						ds.setGeneId(gene.getGene_id());
+						ds.setGeneName(key);
+					}
+
+					ds.setMiRNAId(miRNA.getMiRNA_id());
+					ds.setMiRNAName(miRNA.getMiRNA_name());
+				}
+				if (type == SearchBy.gene_gs_id.getCode()) {
+					String key = getContent(path);
+					Gene gene = null;
+					//FIXME: 兼容 fasta mode 和  input mode 两种模式
+					try {
+						gene = GeneDao.getInstance().getGeneMapById().get(Integer.valueOf(key));
+						ds.setGeneId(gene.getGene_id());
+						ds.setGeneName(gene.getGene_symbol());
+
+					} catch (Exception e) {
+						if (e instanceof NumberFormatException) { 
+							logger.warn("gene null, maybe in the fasta mode");
+							ds.setGeneId(-1);
+							ds.setGeneName(key); //传递给视图
+						}
+					}
+
+					ds.setMiRNAId(miRNA.getMiRNA_id());
+					ds.setMiRNAName(miRNA.getMiRNA_name());
+				}
+			}
+
+			ds.setRank(rank);
+			ds.setScore(scores.get(rank - 1));
+
+			predictedScores.add(ds);
+			rank++;
+		}
+
 		br.close();
 
 		return predictedScores;
 	}
-	
-	public static List<PredictedScore> readKnownOutputText(String path)
-			throws IOException {
+
+	public static List<PredictedScore> readKnownOutputText(String path) throws IOException {
 		int type = ResultView.getType(path);
 
 		List<PredictedScore> predictedScores = new ArrayList<PredictedScore>();
 
-		String knownfile = path + Conf.FILE_SEPARATOR +  "known.txt";
-		
+		String knownfile = path + Conf.FILE_SEPARATOR + "known.txt";
+
 		File file = new File(knownfile);
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		String line = null;
 		int rank = 1;
 
 		while ((line = br.readLine()) != null) {
-				PredictedScore predictedScore = new PredictedScore();
-				
-				if(type == SearchBy.miRNA_name.getCode()) {
-					Gene gene = GeneDao.getInstance().getGeneMapByGsId().get(Integer.valueOf(line));
-					if(null == gene) {
-						logger.warn("gene id " + line  +  " does not exsit in the reference list");
-						continue;
-					}
-					predictedScore.setMiRNAName(getContent(path));
-					predictedScore.setGeneId(gene.getGene_id());
-					predictedScore.setGeneName(gene.getGene_symbol());
+			PredictedScore predictedScore = new PredictedScore();
+
+			if (type == SearchBy.miRNA_name.getCode()) {
+				Gene gene = GeneDao.getInstance().getGeneMapByGsId().get(Integer.valueOf(line));
+				if (null == gene) {
+					logger.warn("gene id " + line + " does not exsit in the reference list");
+					continue;
 				}
-				
-				if(type == SearchBy.gene_gs_id.getCode() ||
-					type == SearchBy.gene_symbol.getCode()	||
-					type == SearchBy.gene_utraname.getCode()) {
-					
-					MiRNA miRNA = MiRNADao.getInstance().getMiRNAMapById().get(Integer.valueOf(line));
-					if(null == miRNA) {
-						logger.warn("miRNA id " + line  +  " does not exsit in the reference list");
-						continue;
-					}
-					if(type == SearchBy.gene_utraname.getCode()) {
+				predictedScore.setMiRNAName(getContent(path));
+				predictedScore.setGeneId(gene.getGene_id());
+				predictedScore.setGeneName(gene.getGene_symbol());
+			}
+
+			if (type == SearchBy.gene_gs_id.getCode() || type == SearchBy.gene_symbol.getCode()
+					|| type == SearchBy.gene_utraname.getCode()) {
+
+				MiRNA miRNA = MiRNADao.getInstance().getMiRNAMapById().get(Integer.valueOf(line));
+				if (null == miRNA) {
+					logger.warn("miRNA id " + line + " does not exsit in the reference list");
+					continue;
+				}
+				if (type == SearchBy.gene_utraname.getCode()) {
 					Gene gene_id = GeneDao.getInstance().getGeneMapByUltraName1().get(getContent(path));
 					predictedScore.setGeneId(gene_id.getGene_id());
 					predictedScore.setGeneName(getContent(path));
 					predictedScore.setMiRNAId(miRNA.getMiRNA_id());
 					predictedScore.setMiRNAName(miRNA.getMiRNA_name());
 				}
-					if(type == SearchBy.gene_symbol.getCode()) {
-						Gene gene_id = GeneDao.getInstance().getGeneMapByGeneSymbol().get(getContent(path));
-						predictedScore.setGeneId(gene_id.getGene_id());
-						predictedScore.setGeneName(getContent(path));
-						predictedScore.setMiRNAId(miRNA.getMiRNA_id());
-						predictedScore.setMiRNAName(miRNA.getMiRNA_name());
-					}
-					if(type ==  SearchBy.gene_gs_id.getCode()) {
-						Gene gene_id = GeneDao.getInstance().getGeneMapById().get(Integer.valueOf(getContent(path)));
-						predictedScore.setGeneId(Integer.valueOf(getContent(path)));
-						predictedScore.setGeneName(gene_id.getGene_symbol());
-						predictedScore.setMiRNAId(miRNA.getMiRNA_id());
-						predictedScore.setMiRNAName(miRNA.getMiRNA_name());
-					}
-					//predictedScore.setGeneName(getContent(path));
-					//predictedScore.setMiRNAId(miRNA.getMiRNA_id());
-					//predictedScore.setMiRNAName(miRNA.getMiRNA_name());
+				if (type == SearchBy.gene_symbol.getCode()) {
+					Gene gene_id = GeneDao.getInstance().getGeneMapByGeneSymbol().get(getContent(path));
+					predictedScore.setGeneId(gene_id.getGene_id());
+					predictedScore.setGeneName(getContent(path));
+					predictedScore.setMiRNAId(miRNA.getMiRNA_id());
+					predictedScore.setMiRNAName(miRNA.getMiRNA_name());
 				}
-				predictedScore.setRank(rank);
-				predictedScores.add(predictedScore);
-				rank++;
+				if (type == SearchBy.gene_gs_id.getCode()) {
+					Gene gene_id = GeneDao.getInstance().getGeneMapById().get(Integer.valueOf(getContent(path)));
+					predictedScore.setGeneId(Integer.valueOf(getContent(path)));
+					predictedScore.setGeneName(gene_id.getGene_symbol());
+					predictedScore.setMiRNAId(miRNA.getMiRNA_id());
+					predictedScore.setMiRNAName(miRNA.getMiRNA_name());
+				}
 			}
+			predictedScore.setRank(rank);
+			predictedScores.add(predictedScore);
+			rank++;
+		}
 		return predictedScores;
 	}
 
@@ -275,7 +259,6 @@ public class ResultView {
 		}
 		return String.valueOf(array);
 	}
-//
 
 	/**
 	 * 根据top筛选结果的个数
@@ -284,12 +267,10 @@ public class ResultView {
 	 * @param top_num
 	 * @return
 	 */
-	public static List<PredictedScore> topFliter(List<PredictedScore> dsList,
-			int top_num) {
+	public static List<PredictedScore> topFliter(List<PredictedScore> dsList, int top_num) {
 		top_num = top_num < dsList.size() ? top_num : dsList.size();
 		dsList = dsList.subList(0, top_num);
 		return dsList;
 	}
-
 
 }
