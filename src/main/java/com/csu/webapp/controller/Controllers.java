@@ -203,7 +203,15 @@ public class Controllers {
 		
 		if (option.intValue() == SearchBy.gene_gs_id.getCode()) { //Search by gene gs
 			 //gene = GeneDao.getInstance().getGeneMapByGsId().get(content);
-			gene = GeneDao.getInstance().getGeneMapById().get(Integer.valueOf(content));
+			Integer gs_id = null;
+			try {
+				gs_id = Integer.valueOf(content);
+			}catch(Exception e) {
+				String msg = "<p>The input id should be in the form of Integer format! <br><br>";   
+				model.addAttribute("message", msg);
+				return "error";
+			}
+			gene = GeneDao.getInstance().getGeneMapById().get(gs_id);
 		}
 		
 		if(null!= gene) { //The gene is in our provided file

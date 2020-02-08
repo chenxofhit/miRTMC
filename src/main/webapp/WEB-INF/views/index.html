@@ -21,7 +21,7 @@
 					<form id="mirtmc-calculate" class="form-horizontal"
 						action="${BAST_PATH}/index/submit" method="post">
 
-						<div class="row">
+						<div class="col-xs-10 form-group field-input">
 							<label for="radio-group" class="formbuilder-radio-group-label">Select
 								an option to search: </label> <input name="option" id="option" value="1"
 								type="radio" checked="checked"><label for="radio-group">MiRNA
@@ -33,22 +33,20 @@
 								for="radio-group">Entrez Gene ID</label>
 						</div>
 
-						<div class="col-xs-8 form-group field-input" id="selfinput">
+						<div class="col-xs-10 form-group field-input" id="selfinput">
 							<input type="text"
 								placeholder="Please input the value according to the above selected option"
 								class="form-control" name="content" maxlength="20" id="input"
 								onblur="checkQueryKeyExsit();">
 						</div>
 
-						<div class="col-xs-8" id="fastainput">
-							<div class="row">
-								<span class="text-info">OR, please input the
-									LncSeq(length≥200 , one sequence, <a
+						<div class="col-xs-10" id="fastainput">
+								<span class="text-info">As the search value is not hit in our provided results, please then input the
+									LncSeq(one sequence, <a
 									href="http://en.wikipedia.org/wiki/Fasta_format"
 									target="__blank">FASTA Format</a>):
-								</span><a class="btn btn-link" id="example" style="margin-left: 10%">load
+								</span><a class="btn btn-link" id="example" style="margin-left: 1%">load
 									example</a>
-							</div>
 							<textarea style="height: 300px;" type="text"
 								placeholder="Please input the LncSeqs you want to search in fasta format"
 								class="form-control" id="sequence" name="sequence"></textarea>
@@ -64,7 +62,7 @@
 						<hr class="row ">
 						</div>
 
-						<div class="col-xs-8" >
+						<div class="col-xs-10" >
 						<div class="row">
 								<button type="submit" class="btn btn-info btn-small pull-left"
 									id="submitbtn">Submit</button>
@@ -138,10 +136,15 @@
 		#include("/WEB-INF/views/container/footer.html")
 	</div>
 	<script type="text/javascript">
+	
 
 	jQuery(function($) {
+		
+		$("#fastainput").hide();
+
+		
 			$("#mirtmc-calculate input[type=radio]").change(function() {
-				$("#fastainput").show();
+				$("#fastainput").hide();
 				$("#selfinput").show();
 			});
 		})
@@ -223,7 +226,7 @@
 												return false;
 											}
 										} 
-										if (sequence.length >= 200) {
+										if (sequence.length >= 0) {
 											var sequence_pattern = new RegExp(
 													"^[agctuAGCTU]*$");
 											var arr = sequence
