@@ -153,17 +153,24 @@ public class ResultView {
 					}
 					if(type ==  SearchBy.gene_gs_id.getCode()) {
 						String key = getContent(path);
-						Gene gene = GeneDao.getInstance().getGeneMapById().get(Integer.valueOf(key));
-					
-						if(null == gene) {
-							logger.warn("gene null, maybe in the fasta mode");
-							ds.setGeneId(-1);
-							ds.setGeneName(key);
+						Gene gene = null;
+						
+						try {
+						  gene = GeneDao.getInstance().getGeneMapById().get(Integer.valueOf(key));
+						  ds.setGeneId(gene.getGene_id());
+						  ds.setGeneName(gene.getGene_symbol());
+						  
+						}catch(Exception e) {
+							if(e instanceof NumberFormatException) {
+								logger.warn("gene null, maybe in the fasta mode");
+							    ds.setGeneId(-1);
+							    ds.setGeneName(key);
+							}
 						}
-						else {
-							ds.setGeneId(gene.getGene_id());
-							ds.setGeneName(key);
-						}	
+//			
+						
+
+						
 						ds.setMiRNAId(miRNA.getMiRNA_id());
 						ds.setMiRNAName(miRNA.getMiRNA_name());
 					}
