@@ -19,7 +19,7 @@ import com.csu.webapp.dto.CalcParameter;
  * 
  *
  */
-public class CalcParameterHelper {
+public class CalcParameterHelper{
 	
 	private String fileName;
 	
