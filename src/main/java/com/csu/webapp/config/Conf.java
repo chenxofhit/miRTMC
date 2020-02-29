@@ -14,8 +14,8 @@ public class Conf {
 	 */
 	// public static final String HOST = "smtp.csu.edu.cn";
 	public static final String HOST = "202.197.64.21";
-	public static final String USER = "weilan@csu.edu.cn";
-	public static final String PASSWORD = "lanwei3346250";
+	public static final String USER = "jianghui@csu.edu.cn";
+	public static final String PASSWORD = "passw0rd100";
 
 	/**
 	 * 系统符号
@@ -50,7 +50,7 @@ public class Conf {
 				+ "<p> The results are kept on the server for 3 months. "
 				+ "<p>Thanks for using the miRTMC server.<br>"
 				+ "--------------<br>" + "<p>The miRTMC Server Team"
-				+ "<p>School of Information Science and Engineering"
+				+ "<p>School of Computer Science and Engineering"
 				+ "<p>Central South University" + "</body></html>";
 
 		return mailContent;

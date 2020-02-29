@@ -10,11 +10,24 @@
 						class="glyphicon glyphicon-info-sign"> </span>miRTMC</strong>
 				</h2>
 				<hr class="G-MarginTop20">
-				<!-- <div class="row">
-                    <p class="text-default alert alert-info G-MarginTop20 ldap-brief">
-                        Long noncoding RNAs are a biggest class of non-coding RNA with greater than 200nt in length which can regulate gene expression in different levels including transcriptional, pos-transcriptional and epigenetic regulation. Identifing lncRNA-disease association would contribute to dissect the complex mechanisms of disease pathogenesis. Here, we developed a new lncRNA-disease association predictor, LDAP (lncRNA-disease association predictor), by integrating multiple biological data resources. The LDAP provides two ways to input your data: a lncRNA sequence or a txt file with multiple sequences with FASTA format.
-                    </p>
-                </div> -->
+				<div class="row">
+					<p class="text-default alert alert-info G-MarginTop20 miRTMC-brief">
+						microRNAs (miRNAs) are small non-coding RNAs which modulate the
+						stability of mRNA targets and their rates of translation into
+						proteins at transcriptional level and posttranscriptional level.
+						miRNA dysfunctions can lead to human diseases because of
+						dysregulation of their targets. Correct miRNA target prediction
+						will lead to better understanding of the mechanisms of human
+						diseases and provide hints on curing them. Here, we developed a
+						new miRNA targets predictor, miRTMC (miRNA targets prediction
+						based on matrix completion), by integrating miRNA sequence
+						similarity, gene sequence similarity and known miRNA targets. You
+						can enter the miRNA name or gene symbol (Entrez Gene ID) to query
+						the recommendation results that we have calculated. If the name or
+						id you entered does not exist in our computed results, please
+						provide the corresponding miRNA sequence or 3'UTR sequence, and
+						the calculation result will be given.</p>
+				</div>
 
 				<div class="radio-group">
 
@@ -25,31 +38,30 @@
 							<label for="radio-group" class="formbuilder-radio-group-label">Select
 								an option to search: </label> <input name="option" id="option" value="1"
 								type="radio" checked="checked"><label for="radio-group">MiRNA
-								name</label> 
-<!-- 								<input name="option" id="option" value="2" type="radio"><label -->
-<!-- 								for="radio-group">Refseq_ID</label>  -->
-								<input name="option"
- 								id="option" value="3" type="radio">
-								<label
-								for="radio-group">Gene symbol</label> <input name="option"
+								name</label>
+							<!-- 								<input name="option" id="option" value="2" type="radio"><label -->
+							<!-- 								for="radio-group">Refseq_ID</label>  -->
+							<input name="option" id="option" value="3" type="radio">
+							<label for="radio-group">Gene symbol</label> <input name="option"
 								id="option" value="4" type="radio"><label
 								for="radio-group">Entrez Gene ID</label>
 						</div>
 
 						<div class="col-xs-10 form-group field-input" id="selfinput">
 							<input type="text"
-								placeholder="Please input the value according to the above selected option"
+								placeholder="Please input the value with the selected option，and then click other place anywhere"
 								class="form-control" name="content" maxlength="20" id="input"
 								onblur="checkQueryKeyExsit();">
 						</div>
 
 						<div class="col-xs-10" id="fastainput">
-								<span class="text-info">As the search value is not hit in our provided results, please then input the
-									LncSeq(one sequence, <a
-									href="http://en.wikipedia.org/wiki/Fasta_format"
-									target="__blank">FASTA Format</a>):
-								</span><a class="btn btn-link" id="example" style="margin-left: 1%">load
-									example</a>
+							<span class="text-info">As the search value is not hit in
+								our provided results, please then input the Corresponding
+								Sequence(one sequence, <a
+								href="http://en.wikipedia.org/wiki/Fasta_format"
+								target="__blank">FASTA Format</a>):
+							</span><a class="btn btn-link" id="example" style="margin-left: 1%">load
+								example</a>
 							<textarea style="height: 300px;" type="text"
 								placeholder="Please input the LncSeqs you want to search in fasta format"
 								class="form-control" id="sequence" name="sequence"></textarea>
@@ -62,14 +74,14 @@
 								</div>
 							</div>
 
-						<hr class="row ">
+							<hr class="row ">
 						</div>
 
-						<div class="col-xs-10" >
-						<div class="row">
+						<div class="col-xs-10" id="submit">
+							<div class="row">
 								<button type="submit" class="btn btn-info btn-small pull-left"
 									id="submitbtn">Submit</button>
-						</div>
+							</div>
 						</div>
 					</form>
 				</div>
@@ -90,8 +102,8 @@
 				</h2>
 				<hr class="G-MarginTop20">
 				<p class="text-default alert alert-info G-MarginTop20 ldap-brief">miRTMC
-					is a non-profit tool used to provide predict severs for
-					miRNA target.</p>
+					is a non-profit tool used to provide predict severs for miRNA
+					target.</p>
 				<p class="text-default alert alert-info G-MarginTop20 ldap-brief">Questions
 					and comments on the tool and suggestions for improvement to the
 					website are always welcome.</p>
@@ -102,7 +114,8 @@
 				<p>
 					Hui Jiang: <a href="mailto:jianghui@csu.edu.cn">jianghui@csu.edu.cn</a>
 				<p>
-					Xiang chen:<a href="mailto:  @csu.edu.cn"> chenxofhit@@gmail.com</a>
+					Xiang chen:<a href="mailto:  @csu.edu.cn">
+						chenxofhit@@gmail.com</a>
 				<p>
 					Jianxin Wang:<a href="mailto:jxwang@mail.csu.edu.cn">
 						jxwang@mail.csu.edu.cn</a>
@@ -121,7 +134,7 @@
                    <div class="col-xs-1"></div> -->
 				<form class="form-horizontal col-xs-10"
 					action="${BAST_PATH}/checkresult" method="post" id="check-result">
-<!-- 					<div class="row form-group G-MarginTop20">
+					<!-- 					<div class="row form-group G-MarginTop20">
 						Email: <input type="text" id="check_email" name="check_email"
 							placeholder="input your email" data-bv-notempty
 							data-bv-emailAddress
@@ -139,16 +152,15 @@
 		#include("/WEB-INF/views/container/footer.html")
 	</div>
 	<script type="text/javascript">
-	
+		jQuery(function($) {
+			$("#selfinput").show();
+			$("#fastainput").hide();
+			$("#submit").hide();
 
-	jQuery(function($) {
-		
-		$("#fastainput").hide();
-
-		
 			$("#mirtmc-calculate input[type=radio]").change(function() {
-				$("#fastainput").hide();
 				$("#selfinput").show();
+				$("#fastainput").hide();
+				$("#submit").hide();
 			});
 		})
 
@@ -159,20 +171,24 @@
 							url : "${BAST_PATH}/checkQueryKeyExsit.json",
 							type : "POST",
 							data : {
-								option : $("#mirtmc-calculate input[type='radio']:checked").val(),
+								option : $("#mirtmc-calculate input[type='radio']:checked")
+										.val(),
 								content : $("#input").val(),
 							},
 							success : function(response) {
 								if (response == true) {
 									$("#fastainput").hide();
 									$("#selfinput").show();
+
 								} else {
 									$("#fastainput").show();
+									$("#sequence").val("");
 									$("#selfinput").hide();
 								}
+								$("#submit").show();
 							},
 							error : function() {
-								alert("System error, please try it later...");
+								alert("System error, please try later...");
 							}
 						})
 			})
@@ -197,73 +213,68 @@
 			$(function() {
 				//提交计算校验
 				$("#submitbtn")
-						.on(
-								"click",
+						.on("click",
 								function() {
-									
-									if($("#fastainput").is(":hidden")){
-										return true;	
-									} 
+									if ($("#fastainput").is(":hidden")) {
+										return true;
+									}
 
 									var emailAddress = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
 									var sequence = trimStr($("#sequence").val());
 									var email = trimStr($("#email").val());
 
-/* 									alert(sequence + email); */
-/* 									if ($('input[name="file"]').prop('files').length <= 0
-											&& sequence.length <= 0) {
-										alert_info("Please input a sequence or a file...");
-										return false;
-									} else { */
-										var counter = 0;
-									
-										if ($("#email_div").css("display") == "block") {
-											if (emailAddress.test(email)) {
-												//$("#mirtmc-calculate").submit();
-												counter ++;
-												// return true;
+									/* 									alert(sequence + email); */
+									/* 									if ($('input[name="file"]').prop('files').length <= 0
+									 && sequence.length <= 0) {
+									 alert_info("Please input a sequence or a file...");
+									 return false;
+									 } else { */
+									var counter = 0;
+
+									if ($("#email_div").css("display") == "block") {
+										if (emailAddress.test(email)) {
+											//$("#mirtmc-calculate").submit();
+											counter++;
+											// return true;
+										} else {
+											alert_info("The email is not valid");
+											//alert("The email is not valid");
+											$("#email_div").focus();
+											return false;
+										}
+									}
+									if (sequence.length >= 0) {
+										var sequence_pattern = new RegExp(
+												"^[agctuAGCTU]*$");
+										var arr = sequence.split(/\r\n|\r|\n/);
+										console.log(arr);
+										if (arr.length == 2) {
+											var LncSeq = trimStr(arr[1]);
+											// console.log(trimStr(arr[1])));
+											console.log(sequence_pattern
+													.test(LncSeq));
+											if (sequence_pattern.test(LncSeq)) {
+												// return false;
+												counter++;
+
 											} else {
-												alert_info("The email is not valid");
-												//alert("The email is not valid");
-												$("#email_div").focus();
-												return false;
-											}
-										} 
-										if (sequence.length >= 0) {
-											var sequence_pattern = new RegExp(
-													"^[agctuAGCTU]*$");
-											var arr = sequence
-													.split(/\r\n|\r|\n/);
-											console.log(arr);
-											if (arr.length == 2) {
-												var LncSeq = trimStr(arr[1]);
-												// console.log(trimStr(arr[1])));
-												console.log(sequence_pattern
-														.test(LncSeq));
-												if (sequence_pattern
-														.test(LncSeq)) {
-													// return false;
-													counter ++;
-													
-												} else {
-													alert_info("The sequence has invalid characters");
-													return false;
-												}
-											} else {
-												alert_info("The sequence is not valid");
+												alert_info("The sequence has invalid characters");
 												return false;
 											}
 										} else {
-											alert_info("The sequence or the file is not valid");
-											//alert("The sequence or the email is not valid");
+											alert_info("The sequence is not valid");
 											return false;
 										}
-										
-										if(counter >= 2){
-											$("#mirtmc-calculate")
-											.submit();	
-										}
-/* 									} */
+									} else {
+										alert_info("The sequence or the file is not valid");
+										//alert("The sequence or the email is not valid");
+										return false;
+									}
+
+									if (counter >= 2) {
+										$("#mirtmc-calculate").submit();
+									}
+									/* 									} */
 								});
 
 				//查看提交结果
@@ -281,7 +292,11 @@
 				$("#example")
 						.click(
 								function() {
-									var example = ">hsa-miR-7SK\nAUGCAUGCAUGCAUGCGGATGTGAGGGCCTGTCACCCCATTGATCGCCAGGGTTGATTCGGCTGATCTGGCTGGCTAGGCGGGTGTCCCCTTCCTCCCTCACCGCTCCATGTGCGTCCCTCCCGAAGCTGCGCGCTCGGTCGAAGAGGACGACCATCCCCGATAGAGGAGGACCGGTCTTCGGTCAAGGGTATACGAGTAGCTGCGCTCCCCTGCTAGAACCTCCAAACAAGCTCTCAAGGTCCATTTGTAGGAGAACGTAGGGTAGTCAAGCTTCCAAGACTCCAGACACATCCAAATGAGGCGCTGCATGTGGCAGTCTGCCTTTCTTTT";
+									var example = ">hsa-let-7a-5p\nUGAGGUAGUAGGUUGUAUAGUU";
+									var sel = $("input:radio:checked").val();
+									if (sel == "3" || sel == "4") {
+										example = ">NM_001243084\nGCTTTTTCTTAATTTCATTCCTTTTTTTGGACACTGGTGGCTCATTACCTAAAGCAGTCTATTTATATTTTCTACATCTAATTTTAGAAGCCTGGCTACAATACTGCACAAACTTGGTTAGTTCAATTTTGATCCCCTTTCTACTTAATTTACATTAATGCTCTTTTTTAGTATGTTCTTTAATGCTGGATCACAGACAGCTCATTTTCTCAGTTTTTTGGTATTTAAACCATTGCATTGCAGTAGCATCATTTTAAAAAATGCACCTTTTTATTTATTTATTTTTGGCTAGGGAGTTTATCCCTTTTTCGAATTATTTTTAAGAAGATGCCAATATAATTTTTGTAAGAAGGCAGTAACCTTTCATCATGATCATAGGCAGTTGAAAAATTTTTACACCTTTTTTTTCACATTTTACATAAATAATAATGCTTTGCCAGCAGTACGTGGTAGCCACAATTGCACAATATATTTTCTTAAAAAATACCAGCAGTTACTCATGGAATATATTCTGCGTTTATAAAACTAGTTTTTAAGAAGAAATTTTTTTTGGCCTATGAAATTGTTAAACCTGGAACATGACATTGTTAATCATATAATAATGATTCTTAAATGCTGTATGGTTTATTATTTAAATGGGTAAAGCCATTTACATAATATAGAAAGATATGCATATATCTAGAAGGTATGTGGCATTTATTTGGATAAAATTCTCAATTCAGAGAAATCATCTGATGTTTCTATAGTCACTTTGCCAGCTCAAAAGAAAACAATACCCTATGTAGTTGTGGAAGTTTATGCTAATATTGTGTAACTGATATTAAACCTAAATGTTCTGCCTACCCTGTTGGTATAAAGATATTTTGAGCAGACTGTAAACAAGAAAAAAAAAATCATGCATTCTTAGCAAAATTGCCTAGTATGTTAATTTGCTCAAAATACAATGTTTGATTTTATGCACTTTGTCGCTATTAACATCCTTTTTTTCATGTAGATTTCAATAATTGAGTAATTTTAGAAGCATTATTTTAGGAATATATAGTTGTCACAGTAAATATCTTGTTTTTTCTATGTACATTGTACAAATTTTTCATTCCTTTTGCTCTTTGTGGTTGGATCTAACACTAACTGTATTGTTTTGTTACATCAAATAAACATCTTCTGTGGACCAGGC";
+									}
 									$("#sequence").val(example);
 									$("#sequence")[0].focus();
 								});
