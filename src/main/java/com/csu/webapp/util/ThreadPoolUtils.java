@@ -23,9 +23,21 @@ public class ThreadPoolUtils {
 	 * 
 	 */
 	private static final ExecutorService threadPool = Executors.newFixedThreadPool(1);
+
+	
+	/**
+	 * 
+	 * FIXME: 处理静态请求的用一个新的线程池
+	 * 
+	 */
+	private static final ExecutorService threadPoolStatic = Executors.newFixedThreadPool(5);
+
  
 	public static ExecutorService getThreadPool() {
 		return threadPool;
 	}
 
+	public static ExecutorService getThreadpoolstatic() {
+		return threadPoolStatic;
+	}
 }

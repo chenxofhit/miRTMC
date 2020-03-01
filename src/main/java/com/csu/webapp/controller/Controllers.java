@@ -148,7 +148,7 @@ public class Controllers {
 
 				MyThread dojob = new DoJobThread(parameter, "Thread-" + jobid);
 				
-				ExecutorService threadPool = ThreadPoolUtils.getThreadPool();
+				ExecutorService threadPool = ThreadPoolUtils.getThreadpoolstatic();
 				threadPool.submit(dojob);
 
 				String msg = "<p>Thank you for using miRTMC webserver. Please wait for about 1 minute while your job is in process.<br><br>"
@@ -230,7 +230,7 @@ public class Controllers {
 			
 		    MyThread dojob= new DoJobThread(parameter, "Thread-"+jobid);
 
-		    ExecutorService threadPool = ThreadPoolUtils.getThreadPool();
+		    ExecutorService threadPool = ThreadPoolUtils.getThreadpoolstatic();
 			threadPool.submit(dojob);
 
 			String msg = "<p>Thank you for using miRTMC webserver. Please wait for about 1 minute while your job is in process.<br><br>" + "Note: <br>" + "<p>JobID：" + jobid
