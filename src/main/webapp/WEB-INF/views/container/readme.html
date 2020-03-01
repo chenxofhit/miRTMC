@@ -198,100 +198,85 @@
 	<div class="tab-pane active fade in" id="userguide">
 		<div class="G-MarginTop20 ">
 			<!-- <h2><strong class="text-uppercase"><span class="glyphicon glyphicon-info-sign"> </span>User's Guide</strong></h2> -->
-			<p class="text-default alert alert-info G-MarginTop20">The LDAP
-				took the input lncRNA sequence in fasta format, either a pasted
-				sequence or a file with multiple sequences (size limit < 50kb). When
-				the user want to submit single sequence, the user can paste the
-				sequence with FASTA format into textbox (1) and click the “submit”
-				button (2). The user could not close the page and waits for the
-				result. The predicted result will be showed within several minutes.
-				The user can download the results (3). If the user want to check the
-				result in future, it can be regained by email (4). In addition, the
-				user can search the result with disease name (5).</p>
-			<div class="text-default G-MarginTop10">
-				The flowchat is illustrated below: <img class="G-MarginTop10"
-					alt="one-sequence.jpg" src="images/one-sequence.jpg">
-				<p class="text-default alert alert-info G-MarginTop20">When the
-					user submits text file with multiple sequences, the user uploads
-					the text with multiple sequences (1) and provides email address
-					(2). And then clicks the “submit” button (3), the user can close
-					the page when submitting successfully. The notification will be
-					sent to the user in term of email when task is completed. The user
-					can check their result in result page by jobid and email (4). In
-					addition, the user can download the results (5) and search the
-					result with disease name (6).</p>
-				<div class="text-default G-MarginTop10">
+			<p class="text-default alert alert-info G-MarginTop20">The miRTMC
+				uses miRNA name or Gene symbol (Entrez Gene ID) as input. You can query 
+				the result we have calculated by miRNA name / Gene symbol (Entrez Gene ID).
+				 Step 1 Please select the type you want to query. You can choose one of miRNA name, gene symbol or Entrez Gene ID.
+                 Step 2 Please input the value corresponding to the type you selected in the first step in the input box, and 
+                 then click the blank space on the page. miRTMC will automatically query you if the miRNA name or 
+                 gene symbol / Entrez Gene ID you entered exists in the results we have calculated. 
+                 If it exists, go to step 3. If not, go to step 4.</p>
+                 <div class="text-default G-MarginTop10">
 					The flowchat is illustrated below: <img class="G-MarginTop10"
-						alt="mutiple-sequences.jpg" src="images/mutiple-sequences.jpg">
+						alt="step1-2.png" src="images/step1-2.png">
 				</div>
-				<hr>
-				<h3>
-					<strong class="text-danger text-uppercase">Input Examples</strong>
-				</h3>
-				<p class="text-default alert alert-info G-MarginTop20">The LDAP
-					provides two ways to upload data:</p>
-				<h4>
-					<strong class="text-danger text-uppercase">1): single
-						sequence</strong>
-				</h4>
+			<div class="text-default G-MarginTop10">
+				<!--  The flowchat is illustrated below: <img class="G-MarginTop10"
+					alt="one-sequence.jpg" src="images/one-sequence.jpg">-->
+				<p class="text-default alert alert-info G-MarginTop20">
+				Step 3 Click the submit button that appears below the text box, 
+				wait for a while in the results page, 
+				and the results will appear..</p>
+				<div class="text-default G-MarginTop10">
+				The flowchat is illustrated below: <img class="G-MarginTop10"
+						alt="step3.png" src="images/step3.png">
+						<img class="G-MarginTop10"
+						alt="result.png" src="images/result.png">
+					<!--  The flowchat is illustrated below: <img class="G-MarginTop10"
+						alt="mutiple-sequences.jpg" src="images/mutiple-sequences.jpg">-->
+				</div>
+				<p class="text-default alert alert-info G-MarginTop20">The miRTMC
+				Step 4 As the search value is not hit in our provided results, please fill in or copy the corresponding 
+				sequence (only fasta format can be entered, only 1 sequence can be entered) into the specified text box 
+				according to the page prompt. Then fill in the email address used to receive the calculation results in 
+				the corresponding text box and click the submit button. When the waiting page appears, it indicates that 
+				the calculation task has been submitted successfully. The JobId is prompted on the page. At this time, 
+				you can close the email waiting for the calculation result to complete. There is a link for querying 
+				the calculation results in the email. Clicking it will open the results display page. At the same time, 
+				you can also use the JobId to query the result on the result page.</p>
+                 <div class="text-default G-MarginTop10">
+					The flowchat is illustrated below: <img class="G-MarginTop10"
+						alt="step4.png" src="images/step4.png">
+				</div>
+				<div class="text-default G-MarginTop10">
+					 <img class="G-MarginTop10"
+						alt="result2.png" src="images/result2.png">
+				</div>
+				
 			</div>
-			<p class="text-default alert alert-info  G-MarginTop20"
-				style="word-wrap: break-word; word-break: normal;">single
-				sequence: the user can paste their sequence with FASTA format (A
-				sequence in FASTA format begins with a single-line description,
-				followed by lines of sequence data. The description line is
-				distinguished from the sequence data by a greater-than (">") symbol
-				in the first column.). Three input examples of single sequence are
-				listed below:</p>
-			<hr>
-			<p class="text-muted G-MarginTop20"
-				style="word-wrap: break-word; word-break: normal;">
-				>7SK <br>GGATGTGAGGGCGATCTGGCTGCGACATCTGTCACCCCATTGATCGCCAGGGTTGATTCGGCTGATCTGGCTGGCTAGGCGGGTGTCCCCTTCCTCCCTCACCGCTCCATGTGCGTCCCTCCCGAAGCTGCGCGCTCGGTCGAAGAGGACGACCATCCCCGATAGAGGAGGACCGGTCTTCGGTCAAGGGTATACGAGTAGCTGCGCTCCCCTGCTAGAACCTCCAAACAAGCTCTCAAGGTCCATTTGTAGGAGAACGTAGGGTAGTCAAGCTTCCAAGACTCCAGACACATCCAAATGAGGCGCTGCATGTGGCAGTCTGCCTTTCTTTT
-				<br>
-			</p>
-			<hr>
-			<p class="text-muted G-MarginTop20"
-				style="word-wrap: break-word; word-break: normal;">
-				>BCYRN1P2 <br>
-				CTACAAAGGACATGAACTCATCATTTTTTATGGCTGCATAGTATTCCATGGTGTATATGTGCCACATTTTCTTAATCCAGTCTATCATTGTTGGACATTTGCAGTGGCTCACGCCTGTAATCCCAGCTCTCAGGGAGGCTAAGAGGCGGGAGGATAGCTTGAGCCCAGGAGTTCGAGACCTGCCTGGGCAATATAGCGAGACCCCGTTCTCCAGAAAAAGGAAAAAAAAAACAAAACAAAAGACAAAAAAAAAAAAATAAGCGTAACTTCCCTCAAGGCAAACCAATCCAATCTTTTTAACACATTTTTATGTATGTATGTATGTATGTATTTATTTTTAGACATAGGTGGGCCACCGAAGTTCTTTGACTTGCTATTTATTTCTTTCC
-				<br>
-			</p>
-			<hr>
-			<p class="text-muted G-MarginTop20"
-				style="word-wrap: break-word; word-break: normal;">
-				>GAPDH <br>
-				GTGCGCAGCGGGTGCATCCCTGTCCGGATGCTGCGCCTGCGGTAGAGCGGCCGCCATGTTGCAACCGGGAAGGAAATGAATGGGCAGCCGTTAGGAAAGCCTGCCGGTGACTAACCCTGCGCTCCTGCCTCGATGGGTGGAGTCGCGTGTGGCGGGGAAGTCAGGTGGAGCGAGGCTAGCTGGCCCGATTTCTCCTCCGGGTGATGCTTTTCCTAGATTATTCTCTGATTTGGTCGTATTGGGCGCCTGGTCACCAGGGCTGCTTTTAACTCTGGTAAAGTGGATATTGTTGCCATCAATGACCCCTTCATTGACCTCAACTACATGGTTTACATGTTCCAATATGATTCCACCCATGGCAAATTCCATGGCACCGTCAAGGCTGAGAACGGGAAGCTTGTCATCAATGGAAATCCCATCACCATCTTCCAGGAGCGAGATCCCTCCAAAATCAAGTGGGGCGATGCTGGCGCTGAGTACGTCGTGGAGTCCACTGGCGTCTTCACCACCATGGAGAAGGCTGGGGCTCATTTGCAGGGGGGAGCCAAAAGGGTCATCATCTCTGCCCCCTCTGCTGATGCCCCCATGTTCGTCATGGGTGTGAACCATGAGAAGTATGACAACAGCCTCAAGATCATCAGCAATGCCTCCTGCACCACCAACTGCTTAGCACCCCTGGCCAAGGTCATCCATGACAACTTTGGTATCGTGGAAGGACTCATGACCACAGTCCATGCCATCACTGCCACCCAGAAGACTGTGGATGGCCCCTCCGGGAAACTGTGGCGTGATGGCCGCGGGGCTCTCCAGAACATCATCCCTGCCTCTACTGGCGCTGCCAAGGCTGTGGGCAAGGTCATCCCTGAGCTGAACGGGAAGCTCACTGGCATGGCCTTCCGTGTCCCCACTGCCAACGTGTCAGTGGTGGACCTGACCTGCCGTCTAGAAAAACCTGCCAAATATGATGACATCAAGAAGGTGGTGAAGCAGGCGTCGGAGGGCCCCCTCAAGGGCATCCTGGGCTACACTGAGCACCAGGTGGTCTCCTCTGACTTCAACAGCGACACCCACTCCTCCACCTTTGACGCTGGGGCTGGCATTGCCCTCAACGACCACTTTGTCAAGCTCATTTCCTGGTATGACAACGAATTTGGCTACAGCAACAGGGTGGTGGACCTCATGGCCCACATGGCCTCCAAGGAGTAAGACCCCTGGACCACCAGCCCCAGCAAGAGCACAAGAGGAAGAGAGAGACCCTCACTGCTGGGGAGTCCCTGCCACACTCAGTCCCCCACCACACTGAATCTCCCCTCCTCACAGTTGCCATGTAGACCCCTTGAAGAGGGGAGGGGCCTAGGGAGCCGCACCTTGTCATGTACCATCAATAAAGTACCCTGTGCTCAACCAAAAAAAAAAAAAAAAAAA
-				<br>
-			</p>
-			<hr>
-			<h4>
-				<strong class="text-danger text-uppercase">2): Text file
-					with multiple sequences</strong>
-			</h4>
-			<p class="text-default alert alert-info G-MarginTop20"
-				style="word-wrap: break-word; word-break: normal;">
-				Text file with multiple sequences: if the user want to upload
-				multiple sequences, we recommend the user upload their data with
-				text file. In text file, each sequence should be the FASTA format.
-				The size of text file should be 50KB. The input example of text is
-				listed below (In package, it can four text files: example1.txt,
-				example2.txt, example3.txt and example4.txt contains two, four, six
-				and ten lncRNA sequences, respectively.): <br>
-			</p>
-			<a href="download/examples" class="btn btn-primary" role="button">Download</a>
-			<hr>
-			<h3>
-				<strong class="text-danger text-uppercase">Output
-					Description</strong>
-			</h3>
+			
 			<p class="text-default alert alert-info G-MarginTop20"
 				style="word-wrap: break-word; word-break: normal;">The final
-				results will be given in a table format. Each sequence id follows
-				the result of predicted disease with scores ranging from 0 to 1.
-				Higher scores represent higher confidence of the disease.
-				Downloadable results are provided in txt format. If email address is
-				left previously, an alert mail will be sent as soon as the results
-				are ready.</p>
+				results will be given in a table format. The predict result table
+				has 5 columns. The following table describes the meaning of each column.
+	      
+				<table border="1">
+               <tr>
+               <th>Columns</th>
+              <th>Description</th>
+              </tr>
+              <tr>
+             <td>1. RANK</td>
+              <td>Rank of this miRNA-gene pair, sort by score, descend order</td>
+              </tr>
+               <tr>
+             <td>2. miRNA name</td>
+              <td>miRNA name, from miRBase(v22)</td>
+              </tr>
+                 <tr>
+             <td>3. gene ide</td>
+              <td>gene identifier, from NCBI</td>
+              </tr>
+                  <tr>
+             <td>4. gene symbol</td>
+              <td>gene symbol, from NCBI</td>
+              </tr>
+               <tr>
+             <td>5. score</td>
+              <td>the predict score of this miRNA-gene pair, the larger the better.</td>
+              </tr>
+               </table>
+				</p>
 		</div>
 	</div>
 	<div class="tab-pane" id="supplementary">
